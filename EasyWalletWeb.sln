@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWalletWeb", "EasyWalletWeb\EasyWalletWeb.csproj", "{04C61B09-2370-4E1E-A1F3-B65E59BC9489}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWalletWeb", "EasyWalletWeb\EasyWalletWeb.csproj", "{9C7B8353-FF09-4AD4-86D4-AE73BB38E3DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{04C61B09-2370-4E1E-A1F3-B65E59BC9489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04C61B09-2370-4E1E-A1F3-B65E59BC9489}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04C61B09-2370-4E1E-A1F3-B65E59BC9489}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04C61B09-2370-4E1E-A1F3-B65E59BC9489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7B8353-FF09-4AD4-86D4-AE73BB38E3DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7B8353-FF09-4AD4-86D4-AE73BB38E3DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7B8353-FF09-4AD4-86D4-AE73BB38E3DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7B8353-FF09-4AD4-86D4-AE73BB38E3DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {92B3CE72-D205-4DA9-8906-2338CCD02DC1}
+		SolutionGuid = {134D9FB8-A383-49F9-8709-A828CFD4323C}
 	EndGlobalSection
 EndGlobal
