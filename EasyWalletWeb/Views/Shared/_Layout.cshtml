@@ -16,21 +16,23 @@
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/login.css" />
+    <link rel="stylesheet" href="~/css/wallet.css" />
 </head>
 <body>
 
+    @RenderBody()
+    <!--
     <div class="">
         <main role="main" class="pb-3">
-            @RenderBody()
         </main>
     </div>
-
+    -->
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - EasyWalletWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.UtcNow.Year - Easy Wallet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>

@@ -15,6 +15,16 @@ namespace EasyWalletWeb.Controllers
             return View();
         }
 
+        public IActionResult Login()
+        {
+            return RedirectToRoute("login");
+        }
+
+        public IActionResult Signup()
+        {
+            return RedirectToRoute("signup");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

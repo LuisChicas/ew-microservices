@@ -1,0 +1,19 @@
+﻿
+<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
+    <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
+    <h4 class="my-0 mr-auto" style="color:white">Easy Wallet</h4>
+    <span class="mr-2 text-light">Don't have an account?</span>
+    <a asp-route="signup" class="btn btn-light">Sign Up</a>
+</div>
+
+<div class="login-container">
+    <form class="form-auth form-signin text-center">
+        <img class="mb-4" src="~/images/logo.png" alt="logo" width="76" height="60">
+        <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign in</button>
+    </form>
+</div>

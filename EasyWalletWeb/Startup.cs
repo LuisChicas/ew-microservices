@@ -52,8 +52,24 @@ namespace EasyWalletWeb
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "home",
+                    template: "",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                routes.MapRoute(
+                    name: "login",
+                    template: "login",
+                    defaults: new { controller = "Auth", action = "Login" });
+
+                routes.MapRoute(
+                    name: "signup",
+                    template: "signup",
+                    defaults: new { controller = "Auth", action = "Signup" });
+
+                routes.MapRoute(
+                    name: "wallet",
+                    template: "u",
+                    defaults: new { controller = "Wallet", action = "Index" });
             });
         }
     }

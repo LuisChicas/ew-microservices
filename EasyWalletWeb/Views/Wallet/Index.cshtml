@@ -1,0 +1,25 @@
+﻿
+@{
+   
+}
+
+<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
+    <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
+    <h4 class="my-0 mr-4" style="color:white">Easy Wallet</h4>
+    <a asp-controller="Wallet" asp-action="Categories" class="p-2 mr-2 text-light">Categories</a>
+    <a asp-controller="Wallet" asp-action="Reports" class="p-2 mr-auto text-light">Reports</a>
+    <a asp-controller="Wallet" asp-action="Logout" class="p-2 text-light">Log out</a>
+</div>
+
+<div class="wallet-container">
+    <form class="spend-form text-center">
+        <h1 class="h3 mb-4 font-weight-normal">Enter a spend</h1>
+        <div class="input-group">
+            <input type="text" id="inputSpend" class="form-control" placeholder="Write a tag and an amount. i.e.: 'Super Market $20'" required autofocus>
+            <label for="inputSpend" class="sr-only">Spend</label>
+            <div class="input-group-append">
+                <button class="btn btn-primary btn-block" type="submit">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
