@@ -1,4 +1,5 @@
-﻿
+﻿@model EasyWalletWeb.ViewModels.AuthSignup
+
 <div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
     <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
     <h4 class="my-0 mr-auto" style="color:white">Easy Wallet</h4>
@@ -7,17 +8,29 @@
 </div>
 
 <div class="login-container">
-    <form class="form-auth form-signup text-center">
+    <form class="form-auth form-signup text-center" action="Signup" method="post">
         <img class="mb-4" src="~/images/logo.png" alt="logo" width="76" height="60">
         <h1 class="h3 mb-4 font-weight-normal">Sign up</h1>
-        <label for="inputName" class="sr-only">Name</label>
-        <input type="text" id="inputName" class="form-control" placeholder="Name (optional)" autofocus>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <label for="inputRepeatPassword" class="sr-only">Repeat Password</label>
-        <input type="password" id="inputRepeatPassword" class="form-control" placeholder="Repeat password" required>
-        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign up</button>
+
+        @if (!string.IsNullOrEmpty(Model?.Email))
+        {
+            @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+        }
+
+        <label for="Name" class="sr-only">Name</label>
+        <input type="text" id="Name" name="Name" class="form-control" placeholder="Name (optional)" autofocus>
+        <label for="Email" class="sr-only">Email address</label>
+        <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required>
+        <label for="Password" class="sr-only">Password</label>
+        <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+        <label for="RepeatPassword" class="sr-only">Repeat Password</label>
+        <input type="password" id="RepeatPassword" class="form-control" placeholder="Repeat password" required>
+        <small class="form-text text-muted">Your password must have at least 6 characters</small>
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" value="Signup">Sign up</button>
     </form>
 </div>
+
+@section Scripts
+{
+    <script src="~/js/signup.js"></script>
+}
