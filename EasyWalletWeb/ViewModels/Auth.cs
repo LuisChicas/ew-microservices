@@ -11,4 +11,10 @@ namespace EasyWalletWeb.ViewModels
         public string Email { set; get; }
         public string Password { set; get; }
     }
+
+    public class AuthLogin
+    {
+        public string Email { set; get; }
+        public string Password { set; get; }
+    }
 }

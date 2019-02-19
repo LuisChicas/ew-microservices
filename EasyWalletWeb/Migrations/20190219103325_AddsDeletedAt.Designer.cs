@@ -3,14 +3,16 @@ using System;
 using EasyWalletWeb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EasyWalletWeb.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190219103325_AddsDeletedAt")]
+    partial class AddsDeletedAt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,14 +26,11 @@ namespace EasyWalletWeb.Migrations
 
                     b.Property<DateTime?>("DeletedAt");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(255);
+                    b.Property<string>("Name");
 
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Categories");
                 });
@@ -43,8 +42,7 @@ namespace EasyWalletWeb.Migrations
 
                     b.Property<decimal>("Amount");
 
-                    b.Property<string>("Comment")
-                        .HasMaxLength(255);
+                    b.Property<string>("Comment");
 
                     b.Property<DateTime>("Date");
 
@@ -68,8 +66,7 @@ namespace EasyWalletWeb.Migrations
 
                     b.Property<DateTime?>("DeletedAt");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(255);
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -85,26 +82,15 @@ namespace EasyWalletWeb.Migrations
 
                     b.Property<DateTime?>("DeletedAt");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(255);
+                    b.Property<string>("Email");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(255);
+                    b.Property<string>("Name");
 
-                    b.Property<string>("PasswordHash")
-                        .HasMaxLength(511);
+                    b.Property<string>("PasswordHash");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("EasyWalletWeb.Models.Category", b =>
-                {
-                    b.HasOne("EasyWalletWeb.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EasyWalletWeb.Models.Entry", b =>

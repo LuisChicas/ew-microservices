@@ -12,6 +12,11 @@ namespace EasyWalletWeb.Controllers
     {
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("wallet");
+            }
+
             return View();
         }
 

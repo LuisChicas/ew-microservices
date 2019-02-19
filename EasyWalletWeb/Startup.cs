@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +35,12 @@ namespace EasyWalletWeb
             });
 
             services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration.GetConnectionString("WalletDB")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => {
+                //o.Cookie.Domain = "wallet.luischicas.com";
+                o.ExpireTimeSpan = new TimeSpan(2, 0, 0, 0);
+                o.LoginPath = "/login";
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -49,6 +57,7 @@ namespace EasyWalletWeb
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseCookiePolicy();
 
             app.UseMvc(routes =>
@@ -72,6 +81,31 @@ namespace EasyWalletWeb
                     name: "wallet",
                     template: "u",
                     defaults: new { controller = "Wallet", action = "Index" });
+                
+                routes.MapRoute(
+                    name: "logout",
+                    template: "logout",
+                    defaults: new { controller = "Auth", action = "Logout" });
+
+                routes.MapRoute(
+                    name: "categories",
+                    template: "u/categories",
+                    defaults: new { controller = "Categories", action = "Index" });
+
+                routes.MapRoute(
+                    name: "new-category",
+                    template: "u/categories/new",
+                    defaults: new { controller = "Categories", action = "New" });
+
+                routes.MapRoute(
+                    name: "edit-category",
+                    template: "u/categories/edit/{id}",
+                    defaults: new { controller = "Categories", action = "Edit" });
+
+                routes.MapRoute(
+                    name: "delete-category",
+                    template: "u/categories/delete/{id}",
+                    defaults: new { controller = "Categories", action = "Delete" });
             });
         }
     }

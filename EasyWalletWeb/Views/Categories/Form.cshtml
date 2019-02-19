@@ -1,0 +1,66 @@
+﻿@model EasyWalletWeb.ViewModels.CategoriesForm
+
+<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
+    <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
+    <h4 class="my-0 mr-4" style="color:white">Easy Wallet</h4>
+    <a asp-controller="Wallet" asp-action="Index" class="p-2 mr-2 text-light">Home</a>
+    <a asp-controller="Categories" asp-action="Index" class="p-2 mr-2 text-light">Categories</a>
+    <a asp-controller="Wallet" asp-action="Reports" class="p-2 mr-auto text-light">Reports</a>
+    <a id="logout" asp-controller="Auth" asp-action="Logout" class="p-2 text-light">Log out</a>
+</div>
+
+<div class="categories-main-container">
+    <div class="categories-container">
+        <h3 class="mb-4">@(Model.IsNew ? "New category" : "Edit " + Model.Name)</h3>
+        <form action="@(Model.IsNew ? "New" : "Edit")" method="post">
+
+            @if (!Model.IsNew)
+            {
+              @Html.HiddenFor(c => c.Id)
+            }
+
+            <h5>Name</h5>
+
+            @if (!string.IsNullOrEmpty(Model?.Name) && Model.IsNew)
+            {
+                @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+            }
+
+            <label for="Name" class="sr-only">Name</label>
+            <input id="Name" name="Name" type="text" placeholder="Name" class="form-control mb-3" required autofocus value="@Model.Name" />
+            <h5>Tags</h5>
+            <div class="input-group mb-3">
+                <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="Write the name of a tag and click 'Add'">
+                <label for="tags-input" class="sr-only">Tags</label>
+                <div class="input-group-append">
+                    <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">Add</button>
+                </div>
+            </div>
+            <ul id="tags-container" class="list-unstyled">
+                <li class="tag-template badge-info new-category-tag">
+                    <span>New Tag</span>
+                    <a href="#"><i class="fas fa-times"></i></a>
+                    <input id="new-tag-name-input" type="hidden" />
+                </li>
+
+                @if(!Model.IsNew)
+                {
+                    for(int i = 0; i < Model.Tags.Count; i++)
+                    {
+                        <li class="badge-info new-category-tag tag-@i">
+                            <span>@Model.Tags[i].Name</span>
+                            <a href="#"><i class="fas fa-times"></i></a>
+                            <input id="new-tag-name-input" type="hidden" name="Tags[@i].Name" value="@Model.Tags[i].Name" />
+                        </li>
+                    }
+                }
+            </ul>
+            <button class="btn btn-primary new-category-add-btn" type="submit">@(Model.IsNew ? "Add category" : "Update")</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/categories.js"></script>
+}
