@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/auth.css" />
-    <link rel="stylesheet" href="~/css/wallet.css" />
+    @RenderSection("Styles", required: false)
 </head>
 <body>
 
     @RenderBody()
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted py-2">
         <div class="container">
             &copy; @DateTime.UtcNow.Year - Easy Wallet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

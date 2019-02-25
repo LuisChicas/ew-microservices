@@ -81,7 +81,12 @@ namespace EasyWalletWeb
                     name: "wallet",
                     template: "u",
                     defaults: new { controller = "Wallet", action = "Index" });
-                
+
+                routes.MapRoute(
+                    name: "new-entry",
+                    template: "u/entries/new",
+                    defaults: new { controller = "Wallet", action = "Entry" });
+
                 routes.MapRoute(
                     name: "logout",
                     template: "logout",
@@ -106,6 +111,16 @@ namespace EasyWalletWeb
                     name: "delete-category",
                     template: "u/categories/delete/{id}",
                     defaults: new { controller = "Categories", action = "Delete" });
+
+                routes.MapRoute(
+                    name: "history",
+                    template: "u/reports/history",
+                    defaults: new { controller = "Reports", action = "History" });
+
+                routes.MapRoute(
+                    name: "history-delete",
+                    template: "u/reports/history/delete/{id}",
+                    defaults: new { controller = "Reports", action = "HistoryDelete" });
             });
         }
     }

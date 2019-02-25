@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EasyWalletWeb.ViewModels
 {
-    public class WalletEntry
+    public class ReportsHistory
     {
-        public string Entry { get; set; }
-        public DateTime Date { get; set; }
+        public List<KeyValuePair<DateTime, List<Entry>>> Entries { get; set; }
     }
 }

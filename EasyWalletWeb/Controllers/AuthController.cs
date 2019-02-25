@@ -81,6 +81,8 @@ namespace EasyWalletWeb.Controllers
 
             await Authenticate(user);
 
+            SaveDefaultData(user.Id);
+
             return RedirectToRoute("wallet");
         }
 
@@ -105,6 +107,21 @@ namespace EasyWalletWeb.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+        }
+
+        private void SaveDefaultData(int userId)
+        {
+            var others = new Category();
+            others.Name = "Others";
+            others.UserId = userId;
+            _context.Categories.Add(others);
+            _context.SaveChanges();
+
+            var tag = new Tag();
+            tag.Name = "Others";
+            tag.CategoryId = others.Id;
+            _context.Tags.Add(tag);
+            _context.SaveChanges();
         }
 
         [HttpPost]

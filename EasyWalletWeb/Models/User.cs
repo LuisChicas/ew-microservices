@@ -19,6 +19,8 @@ namespace EasyWalletWeb.Models
         public string PasswordHash { get; set; }
         public DateTime? DeletedAt { get; set; }
 
+        public List<Category> Categories { get; set; }
+
         public static void FakeHash()
         {
             BCrypt.Net.BCrypt.HashPassword("", WorkFactor);

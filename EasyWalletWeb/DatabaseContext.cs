@@ -19,5 +19,15 @@ namespace EasyWalletWeb
         {
 
         }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Entry>(eb =>
+            {
+                eb.Property(e => e.Amount).HasColumnType("decimal(12, 2)");
+            });
+        }
     }
 }
