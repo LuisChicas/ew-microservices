@@ -10,4 +10,20 @@ namespace EasyWalletWeb.ViewModels
     {
         public List<KeyValuePair<DateTime, List<Entry>>> Entries { get; set; }
     }
+
+    public class ReportsMonthly
+    {
+        public List<MonthlyItem> Spends { get; set; }
+    }
+
+    public class MonthlyItem
+    {
+        public DateTime Month { get; set; }
+        public List<KeyValuePair<string, decimal>> SpendsByCategory { get; set; }
+
+        public MonthlyItem()
+        {
+            SpendsByCategory = new List<KeyValuePair<string, decimal>>();
+        }
+    }
 }

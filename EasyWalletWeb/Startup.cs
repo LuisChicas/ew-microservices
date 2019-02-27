@@ -121,6 +121,11 @@ namespace EasyWalletWeb
                     name: "history-delete",
                     template: "u/reports/history/delete/{id}",
                     defaults: new { controller = "Reports", action = "HistoryDelete" });
+
+                routes.MapRoute(
+                    name: "monthly",
+                    template: "u/reports/monthly",
+                    defaults: new { controller = "Reports", action = "Monthly" });
             });
         }
     }
