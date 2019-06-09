@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using EasyWalletWeb.Infrastructure;
 using EasyWalletWeb.Models;
 using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -84,6 +85,60 @@ namespace EasyWalletWeb.Controllers
             }
 
             return View(new ReportsMonthly { Spends = months });
+        }
+
+        public IActionResult Balance()
+        {
+            List<Entry> entries = GetEntries();
+            List<Entry> expenses = entries.Where(e => e.Tag.Category.CategoryTypeId == Constants.ExpensesCategoryTypeID).ToList();
+            List<Entry> incomes = entries.Where(e => e.Tag.Category.CategoryTypeId == Constants.IncomesCategoryTypeID).ToList();
+
+            var data = new ReportsBalance();
+
+            for (int i = 0; i < expenses.Count; i++)
+            {
+                data.CurrentBalance -= expenses[i].Amount;
+            }
+
+            for (int i = 0; i < incomes.Count; i++)
+            {
+                data.CurrentBalance += incomes[i].Amount;
+            }
+
+            var entriesByMonth = entries.GroupBy(e => new DateTime(e.Date.Year, e.Date.Month, 1, 0, 0, 0));
+            decimal balance = data.CurrentBalance;
+            Entry entry;
+
+            // Adds last month
+            if (entriesByMonth.ElementAt(0).Key.Month != DateTime.Now.Month)
+            {
+                data.Months.Add(new KeyValuePair<DateTime, decimal>(
+                    entriesByMonth.ElementAt(0).Key,
+                    data.CurrentBalance
+                ));
+            }
+
+            for (int i = 0; i < entriesByMonth.Count(); i++)
+            {
+                for (int j = 0; j < entriesByMonth.ElementAt(i).Count(); j++)
+                {
+                    entry = entriesByMonth.ElementAt(i).ElementAt(j);
+                    balance += entry.Tag.Category.CategoryTypeId == Constants.ExpensesCategoryTypeID ? entry.Amount : -entry.Amount;
+                }
+
+                data.Months.Add(new KeyValuePair<DateTime, decimal>(
+                    entriesByMonth.ElementAt(i).Key.AddMonths(-1),
+                    balance
+                ));
+            }
+
+            // Removes first month if it has a zero balance
+            if (data.Months.Count > 0 && data.Months[data.Months.Count - 1].Value == 0)
+            {
+                data.Months.RemoveAt(data.Months.Count - 1);
+            }
+
+            return View(data);
         }
 
         private List<Entry> GetEntries()

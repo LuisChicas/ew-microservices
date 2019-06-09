@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using EasyWalletWeb.Infrastructure;
 using EasyWalletWeb.Models;
 using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -52,7 +53,7 @@ namespace EasyWalletWeb.Controllers
             return RedirectToRoute("wallet");
         }
 
-        public IActionResult Signup()
+        public ActionResult Signup()
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -114,13 +115,26 @@ namespace EasyWalletWeb.Controllers
             var others = new Category();
             others.Name = "Others";
             others.UserId = userId;
-            _context.Categories.Add(others);
-            _context.SaveChanges();
+            others.CategoryTypeId = Constants.ExpensesCategoryTypeID;
 
-            var tag = new Tag();
-            tag.Name = "Others";
-            tag.CategoryId = others.Id;
-            _context.Tags.Add(tag);
+            var incomes = new Category();
+            incomes.Name = "Incomes";
+            incomes.UserId = userId;
+            incomes.CategoryTypeId = Constants.IncomesCategoryTypeID;
+
+            _context.Categories.Add(others);
+            _context.Categories.Add(incomes);
+
+            var othersTag = new Tag();
+            othersTag.Name = "Others";
+            othersTag.CategoryId = others.Id;
+
+            var incomeTag = new Tag();
+            incomeTag.Name = "Income";
+            incomeTag.CategoryId = incomes.Id;
+
+            _context.Tags.Add(othersTag);
+            _context.Tags.Add(incomeTag);
             _context.SaveChanges();
         }
 

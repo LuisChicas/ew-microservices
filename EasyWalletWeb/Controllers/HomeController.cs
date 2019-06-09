@@ -17,7 +17,9 @@ namespace EasyWalletWeb.Controllers
                 return RedirectToRoute("wallet");
             }
 
-            return View();
+            return RedirectToRoute("login");
+
+            //return View();
         }
 
         public IActionResult Login()

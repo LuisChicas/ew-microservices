@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +22,10 @@ namespace EasyWalletWeb
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            var culture = new CultureInfo(Thread.CurrentThread.CurrentCulture.Name);
+            culture.NumberFormat.CurrencyNegativePattern = 1;
+            Thread.CurrentThread.CurrentCulture = culture;
         }
 
         public IConfiguration Configuration { get; }
@@ -126,6 +132,11 @@ namespace EasyWalletWeb
                     name: "monthly",
                     template: "u/reports/monthly",
                     defaults: new { controller = "Reports", action = "Monthly" });
+
+                routes.MapRoute(
+                    name: "balance",
+                    template: "u/reports/balance",
+                    defaults: new { controller = "Reports", action = "Balance" });
             });
         }
     }

@@ -1,23 +1,20 @@
 ﻿@model EasyWalletWeb.ViewModels.WalletEntry
 
+@{
+    ViewData["Title"] = "Home";
+}
+
 @section Styles
-{
+    {
     <link rel="stylesheet" href="~/css/wallet.css" />
 }
 
-<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
-    <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
-    <h4 class="my-0 mr-4" style="color:white">Easy Wallet</h4>
-    <a asp-controller="Wallet" asp-action="Index" class="p-2 mr-2 text-light">Home</a>
-    <a asp-controller="Categories" asp-action="Index" class="p-2 mr-2 text-light">Categories</a>
-    <a asp-controller="Reports" asp-action="History" class="p-2 mr-auto text-light">Reports</a>
-    <a id="logout" asp-controller="Auth" asp-action="Logout" class="p-2 text-light">Log out</a>
-</div>
+<partial name="NavBar" />
 
 <div class="wallet-container">
     @using (Html.BeginForm("Entry", "Wallet", FormMethod.Post, new { @class = "spend-form text-center" }))
     {
-        <h1 class="h3 mb-4 font-weight-normal">Enter a spend</h1>
+        <h1 class="h3 mb-4 font-weight-normal">Enter a expense</h1>
 
         @if (!string.IsNullOrEmpty(Model?.Entry))
         {
@@ -36,6 +33,6 @@
 </div>
 
 @section Scripts
-{
+    {
     <script src="~/js/logout.js"></script>
 }

@@ -35,6 +35,12 @@
     height: 100%;
 }
 
+.no-entries-label {
+    font-weight: 400;
+    color: #999;
+    margin-top: 200px;
+}
+
 .history-month {
     margin-top: 50px;
     margin-left: 15px;

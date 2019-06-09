@@ -86,7 +86,14 @@ namespace EasyWalletWeb.Controllers
 
             if (tagId == default(int))
             {
-                //tagId = DataManager.Get<AppMetadata>()[0].OthersCategoryID;
+                var othersCategory = categories.First(c => c.Name == "Others");
+                var tag = new Tag();
+                tag.Name = keyword;
+                tag.CategoryId = othersCategory.Id;
+                _context.Tags.Add(tag);
+                _context.SaveChanges();
+
+                tagId = _context.Tags.First(t => t.Name == keyword).Id;
             }
 
             DateTime today = DateTime.Now;

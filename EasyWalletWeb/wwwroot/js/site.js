@@ -1,4 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function openNav() {
+    document.getElementById("navbar-mobile").style.height = "11rem";
+    document.getElementById("navbar-mobile").style.marginTop = "-11rem";
+    document.getElementById("navbar").style.marginBottom = "11rem";
+    document.getElementById("menu-btn").style.opacity = "0";
+}
 
-// Write your JavaScript code.
+function closeNav() {
+    document.getElementsById("navbar-mobile").style.height = "0";
+    document.getElementsById("navbar-mobile").style.marginTop = "0";
+    document.getElementById("navbar").style.marginBottom = "0";
+    document.getElementById("menu-btn").style.opacity = "1";
+}

@@ -1,0 +1,17 @@
+﻿<div id="navbar" class="sw-navbar shadow-sm d-flex align-items-center">
+    <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
+    <h4 class="my-0 mr-4" style="color:white">Easy Wallet</h4>
+    <a asp-controller="Wallet" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">Home</a>
+    <a asp-controller="Categories" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">Categories</a>
+    <a asp-controller="Reports" asp-action="Balance" class="p-2 mr-auto text-light not-mobile-only">Reports</a>
+    <a id="logout" asp-controller="Auth" asp-action="Logout" class="p-2 text-light not-mobile-only">Log out</a>
+    <img id="menu-btn" src="~/images/menu-mobile.svg" width="35" height="30" class="ml-auto mobile-only" onclick="openNav()"/>
+</div>
+
+<div id="navbar-mobile" class="sw-navbar-mobile mobile-only">
+    <div>
+        <a asp-controller="Categories" asp-action="Index" class="mx-auto">Categories</a>
+        <a asp-controller="Reports" asp-action="Balance" class="mx-auto">Reports</a>
+        <a id="logout" asp-controller="Auth" asp-action="Logout" class="mx-auto">Log out</a>
+    </div>
+</div>

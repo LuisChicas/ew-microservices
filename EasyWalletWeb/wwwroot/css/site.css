@@ -1,6 +1,65 @@
-﻿.ew-navbar {
+﻿.sw-navbar {
     background-color: #15157D;
+    flex-shrink: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: margin-bottom .5s;
 }
+
+.sw-navbar #menu-btn {
+    transition: opacity .5s;
+}
+
+.sw-navbar-mobile {
+    height: 0;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    background-color: #E1E1F0;
+    overflow-y: hidden;
+    transition: 0.5s;    
+}
+
+.sw-navbar-mobile div {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+}
+
+.sw-navbar-mobile div a {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.sw-navbar-mobile div #logout {
+    font-size: 1rem !important;
+    margin-top: 1rem;
+}
+
+@media only screen and (min-width: 426px) {
+    [class~="sw-navbar"] {
+        padding-left: 3rem !important;
+        padding-right: 3rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .not-mobile-only {
+        display: none;
+    }
+}
+
+
+/* ----------------------------------------------------------------------- */
+
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */

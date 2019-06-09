@@ -26,4 +26,15 @@ namespace EasyWalletWeb.ViewModels
             SpendsByCategory = new List<KeyValuePair<string, decimal>>();
         }
     }
+
+    public class ReportsBalance
+    {
+        public decimal CurrentBalance { get; set; }
+        public List<KeyValuePair<DateTime, decimal>> Months { get; set; }
+
+        public ReportsBalance()
+        {
+            Months = new List<KeyValuePair<DateTime, decimal>>();
+        }
+    }
 }
