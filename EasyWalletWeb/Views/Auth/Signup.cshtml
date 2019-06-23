@@ -4,11 +4,9 @@
     ViewData["Title"] = "Sign Up";
 }
 
-<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
+<div class="sw-navbar shadow-sm d-flex align-items-center p-3 px-5">
     <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
-    <h4 class="my-0 mr-auto" style="color:white">Easy Wallet</h4>
-    <span class="mr-2 text-light">Already have an account?</span>
-    <a asp-route="login" class="btn btn-light">Login</a>
+    <h4 class="my-0 mr-auto" style="color:white">Simple Wallet</h4>
 </div>
 
 <div class="login-container">
@@ -31,10 +29,13 @@
         <input type="password" id="RepeatPassword" class="form-control" placeholder="Repeat password" required>
         <small class="form-text text-muted">Your password must have at least 6 characters</small>
         <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" value="Signup">Sign up</button>
+        <span class="signup-in-login">Already have an account? <a asp-route="login">Login</a></span>
     </form>
 </div>
 
+<partial name="Footer" />
+
 @section Scripts
-    {
+{
     <script src="~/js/signup.js"></script>
 }

@@ -10,31 +10,35 @@
     <link rel="stylesheet" href="~/css/report_balance.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">    
+    <partial name="NavBar" />
 
-<div class="reports-navbar shadow-sm">
-    <div class="reports-navbar-subcontainer mx-auto">
-        <a asp-action="Balance" class="p-2 reports-navbar-selected">Balance</a>
-        <a asp-action="Monthly" class="p-2">Monthly</a>
-        <a asp-action="History" class="p-2">History</a>
-    </div>
-</div>
-
-<div class="reports-main-container py-4">
-    <div class="balance-container" style="margin-top: -10px">
-        <div class="balance-title-container my-5">
-            <h5 class="mr-auto balance-title">Current Balance</h5>
-            <h2 class="ml-auto balance-title">@Model.CurrentBalance.ToString("C")</h2>
+    <div class="reports-navbar shadow-sm">
+        <div class="reports-navbar-subcontainer mx-auto">
+            <a asp-action="Balance" class="p-2 reports-navbar-selected">Balance</a>
+            <a asp-action="Monthly" class="p-2">Monthly</a>
+            <a asp-action="History" class="p-2">History</a>
         </div>
-
-        @for (int i = 0; i < Model.Months.Count; i++)
-        {
-            <div class="d-flex my-4">
-                <h5 class="mr-auto balance-month">@Model.Months[i].Key.ToString("MMMM yyyy")</h5>
-                <h5 class="balance-month">@Model.Months[i].Value.ToString("C")</h5>
-            </div>
-        }
     </div>
+
+    <div class="reports-main-container py-4">
+        <div class="balance-container">
+            <div class="balance-title-container my-5">
+                <h5 class="mr-auto balance-title">Current Balance</h5>
+                <h2 class="ml-auto balance-title">@Model.CurrentBalance.ToString("C")</h2>
+            </div>
+
+            @for (int i = 0; i < Model.Months.Count; i++)
+            {
+                <div class="d-flex my-4">
+                    <h5 class="mr-auto balance-month">@Model.Months[i].Key.ToString("MMMM yyyy")</h5>
+                    <h5 class="balance-month">@Model.Months[i].Value.ToString("C")</h5>
+                </div>
+            }
+        </div>
+    </div>
+
+    <partial name="Footer" />
 </div>
 
 

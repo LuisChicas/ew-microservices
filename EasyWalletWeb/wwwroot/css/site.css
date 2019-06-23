@@ -8,34 +8,64 @@
     transition: margin-bottom .5s;
 }
 
-.sw-navbar #menu-btn {
+.sw-navbar i {
+    color: white;
+    font-size: 1.6rem;
+    padding: 0.5rem;
+    margin: -0.5rem;
     transition: opacity .5s;
 }
 
-.sw-navbar-mobile {
+.sw-navbar #menu-btn {
+    z-index: 2;
+}
+
+.sw-navbar #menu-close-btn {
+    margin-left: -1.9rem;
+    opacity: 0;
+}
+
+.sw-navbar-mobile-extra {
     height: 0;
     width: 100%;
     z-index: 1;
     left: 0;
-    background-color: #E1E1F0;
+    background-color: #D1D1E0;
     overflow-y: hidden;
-    transition: 0.5s;    
+    transition: 0.5s;
 }
 
-.sw-navbar-mobile div {
+.sw-navbar-mobile {
+    display: flex;
+    background-color: #81AAD6;
+}
+
+.sw-navbar-mobile-btn {
+    display: block;
+    width: 50%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #8282B0;
+    opacity: 0.8;
+}
+
+.sw-navbar-mobile-extra div {
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
 }
 
-.sw-navbar-mobile div a {
+.sw-navbar-mobile-extra div a {
     font-size: 1.2rem;
-    margin-bottom: 0.6rem;
 }
 
-.sw-navbar-mobile div #logout {
+.sw-navbar-mobile-extra div #logout {
     font-size: 1rem !important;
-    margin-top: 1rem;
 }
 
 @media only screen and (min-width: 426px) {

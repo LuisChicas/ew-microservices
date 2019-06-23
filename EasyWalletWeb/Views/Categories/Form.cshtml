@@ -9,57 +9,61 @@
     <link rel="stylesheet" href="~/css/categories.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">    
+    <partial name="NavBar" />
 
-<div class="categories-main-container">
-    <div class="categories-container">
-        <h3 class="mb-4">@(Model.IsNew ? "New category" : "Edit " + Model.Name)</h3>
-        <form action="@(Model.IsNew ? "New" : "Edit")" method="post">
-
-            @if (!Model.IsNew)
-            {
-                @Html.HiddenFor(c => c.Id)
-            }
-
-            <h5>Name</h5>
-
-            @if (!string.IsNullOrEmpty(Model?.Name) && Model.IsNew)
-            {
-                @Html.ValidationSummary("", new { @class = "alert alert-danger" })
-            }
-
-            <label for="Name" class="sr-only">Name</label>
-            <input id="Name" name="Name" type="text" placeholder="Name" class="form-control mb-3" required autofocus value="@Model.Name" />
-            <h5>Tags</h5>
-            <div class="input-group mb-3">
-                <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="Write the name of a tag and click 'Add'">
-                <label for="tags-input" class="sr-only">Tags</label>
-                <div class="input-group-append">
-                    <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">Add</button>
-                </div>
-            </div>
-            <ul id="tags-container" class="list-unstyled">
-                <li class="tag-template badge-info new-category-tag">
-                    <span>New Tag</span>
-                    <a href="#"><i class="fas fa-times"></i></a>
-                    <input id="new-tag-name-input" type="hidden" />
-                </li>
+    <div class="categories-main-container">
+        <div class="categories-container">
+            <h3 class="mb-4">@(Model.IsNew ? "New category" : "Edit " + Model.Name)</h3>
+            <form action="@(Model.IsNew ? "New" : "Edit")" method="post">
 
                 @if (!Model.IsNew)
                 {
-                    for (int i = 0; i < Model.Tags.Count; i++)
-                    {
-                        <li class="badge-info new-category-tag tag-@i">
-                            <span>@Model.Tags[i].Name</span>
-                            <a href="#"><i class="fas fa-times"></i></a>
-                            <input id="new-tag-name-input" type="hidden" name="Tags[@i].Name" value="@Model.Tags[i].Name" />
-                        </li>
-                    }
+                    @Html.HiddenFor(c => c.Id)
                 }
-            </ul>
-            <button class="btn btn-primary new-category-add-btn" type="submit">@(Model.IsNew ? "Add category" : "Update")</button>
-        </form>
+
+                <h5>Name</h5>
+
+                @if (!string.IsNullOrEmpty(Model?.Name) && Model.IsNew)
+                {
+                    @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+                }
+
+                <label for="Name" class="sr-only">Name</label>
+                <input id="Name" name="Name" type="text" placeholder="Name" class="form-control mb-3" required autofocus value="@Model.Name" />
+                <h5>Tags</h5>
+                <div class="input-group mb-3">
+                    <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="Write the name of a tag and click 'Add'">
+                    <label for="tags-input" class="sr-only">Tags</label>
+                    <div class="input-group-append">
+                        <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">Add</button>
+                    </div>
+                </div>
+                <ul id="tags-container" class="list-unstyled">
+                    <li class="tag-template badge-info new-category-tag">
+                        <span>New Tag</span>
+                        <a href="#"><i class="fas fa-times"></i></a>
+                        <input id="new-tag-name-input" type="hidden" />
+                    </li>
+
+                    @if (!Model.IsNew)
+                    {
+                        for (int i = 0; i < Model.Tags.Count; i++)
+                        {
+                            <li class="badge-info new-category-tag tag-@i">
+                                <span>@Model.Tags[i].Name</span>
+                                <a href="#"><i class="fas fa-times"></i></a>
+                                <input id="new-tag-name-input" type="hidden" name="Tags[@i].Name" value="@Model.Tags[i].Name" />
+                            </li>
+                        }
+                    }
+                </ul>
+                <button class="btn btn-primary new-category-add-btn" type="submit">@(Model.IsNew ? "Add category" : "Update")</button>
+            </form>
+        </div>
     </div>
+
+    <partial name="Footer" />
 </div>
 
 @section Scripts

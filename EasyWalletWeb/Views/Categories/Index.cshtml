@@ -11,45 +11,49 @@
     <link rel="stylesheet" href="~/css/categories.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">
+    <partial name="NavBar" />
 
-<div class="categories-main-container">
-    <div class="categories-container">
-        <div class="categories-header mb-4">
-            <h2>Categories</h2>
-            <a class="btn category-add-btn" asp-controller="Categories" asp-action="New">
-                <i class="fas fa-plus"></i>
-                Add category
-            </a>
-        </div>
-        @foreach (var category in Model.Categories)
-        {
-            <div class="category">
-                <div class="mr-auto">
-                    <h4 class="mb-3">@category.Name</h4>
-
-                    <ul class="list-unstyled">
-                        @foreach (var tag in category.Tags)
-                        {
-                            <li class="badge badge-info category-tag">@tag.Name</li>
-                        }
-                    </ul>
-                </div>
-                <div>
-                    <a asp-action="Edit" asp-route-id="@category.Id">
-                        <i class="fas fa-edit"></i>
-                    </a>
-
-                    @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID && category.Name != Constants.OthersCategoryName)
-                    {
-                        <a asp-action="Delete" asp-route-id="@category.Id" data-delete-message="Are you sure you want to delete '@category.Name' and his tags?">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    }
-                </div>
+    <div class="categories-main-container">
+        <div class="categories-container">
+            <div class="categories-header mb-4">
+                <h2>Categories</h2>
+                <a class="btn category-add-btn" asp-controller="Categories" asp-action="New">
+                    <i class="fas fa-plus"></i>
+                    Add category
+                </a>
             </div>
-        }
+            @foreach (var category in Model.Categories)
+            {
+                <div class="category">
+                    <div class="mr-auto">
+                        <h4 class="mb-3">@category.Name</h4>
+
+                        <ul class="list-unstyled">
+                            @foreach (var tag in category.Tags)
+                            {
+                                <li class="badge badge-info category-tag">@tag.Name</li>
+                            }
+                        </ul>
+                    </div>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@category.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+
+                        @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID && category.Name != Constants.OthersCategoryName)
+                        {
+                            <a asp-action="Delete" asp-route-id="@category.Id" data-delete-message="Are you sure you want to delete '@category.Name' and his tags?">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     </div>
+
+    <partial name="Footer" />
 </div>
 
 @section Scripts

@@ -8,8 +8,8 @@ body {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     background-color: #f5f5f5;
     height: 90%;
 }
@@ -78,4 +78,20 @@ body {
 
 .validation-summary-errors li {
     list-style-type: none;
+}
+
+.signup-in-login {
+    display: block;
+    margin-top: 1.8rem;
+    color: #777;
+}
+
+.signup-in-login a {
+    font-weight: 500;
+    margin-left: 0.2rem;
+    opacity: 0.8;
+}
+
+.form-signup .signup-in-login {
+    margin-top: 1.2rem !important;
 }

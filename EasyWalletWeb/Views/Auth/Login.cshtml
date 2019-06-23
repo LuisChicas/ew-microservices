@@ -4,17 +4,15 @@
     ViewData["Title"] = "Login";
  }
 
-<div class="ew-navbar shadow-sm d-flex align-items-center p-2 px-5">
+<div class="sw-navbar shadow-sm d-flex align-items-center p-3 px-5">
     <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
-    <h4 class="my-0 mr-auto" style="color:white">Easy Wallet</h4>
-    <span class="mr-2 text-light">Don't have an account?</span>
-    <a asp-route="signup" class="btn btn-light">Sign Up</a>
+    <h4 class="my-0 mr-auto" style="color:white">Simple Wallet</h4>
 </div>
 
 <div class="login-container">
     <form class="form-auth form-signin text-center" action="Login" method="post">
         <img class="mb-4" src="~/images/appicon.png" alt="logo" width="100" height="100">
-        <h1 class="h3 mb-4 font-weight-normal">Please sign in</h1>
+        <h1 class="h3 mb-4 font-weight-normal">Please login</h1>
 
         @if (!string.IsNullOrEmpty(Model?.Email))
         {
@@ -25,6 +23,9 @@
         <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required autofocus>
         <label for="Password" class="sr-only">Password</label>
         <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Login</button>
+        <span class="signup-in-login">Don't have an account? <a asp-route="signup">Sign up</a></span>
     </form>
 </div>
+
+<partial name="Footer"/>

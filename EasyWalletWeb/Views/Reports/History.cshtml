@@ -5,56 +5,61 @@
 }
 
 @section Styles
-    {
+{
     <link rel="stylesheet" href="~/css/reports.css" />
+    <link rel="stylesheet" href="~/css/report_history.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">    
+    <partial name="NavBar" />
 
-<div class="reports-navbar shadow-sm">
-    <div class="reports-navbar-subcontainer mx-auto">
-        <a asp-action="Balance" class="p-2">Balance</a>
-        <a asp-action="Monthly" class="p-2">Monthly</a>
-        <a asp-action="History" class="p-2 reports-navbar-selected">History</a>
+    <div class="reports-navbar shadow-sm">
+        <div class="reports-navbar-subcontainer mx-auto">
+            <a asp-action="Balance" class="p-2">Balance</a>
+            <a asp-action="Monthly" class="p-2">Monthly</a>
+            <a asp-action="History" class="p-2 reports-navbar-selected">History</a>
+        </div>
     </div>
-</div>
 
-<div class="reports-main-container pb-4">
-    <div class="reports-container" style="margin-top: -10px">
-        @if (Model.Entries != null && Model.Entries.Count > 0)
-        {
-            @foreach (var entryPair in Model.Entries)
+    <div class="reports-main-container pb-4">
+        <div class="reports-container">
+            @if (Model.Entries != null && Model.Entries.Count > 0)
             {
-                <h4 class="history-month mb-4">@entryPair.Key.ToString("MMMM yyyy")</h4>
-
-                @foreach (var entry in entryPair.Value)
+                @foreach (var entryPair in Model.Entries)
                 {
-                    <div class="history-entry">
-                        <text class="history-entry-date my-auto mr-5">@entry.Date.ToString("dd-MMM-yy")</text>
-                        <div class="">
-                            <h5 class="history-entry-category mb-1">@entry.Tag.Category.Name</h5>
+                    <h4 class="history-month mb-4">@entryPair.Key.ToString("MMMM yyyy")</h4>
 
-                            <ul class="list-unstyled mb-0">
-                                <li class="badge badge-info category-tag">@entry.Tag.Name</li>
-                            </ul>
+                    @foreach (var entry in entryPair.Value)
+                    {
+                        <div class="history-entry">
+                            <text class="history-entry-date my-auto">@entry.Date.ToString("dd-MMM-yy")</text>
+                            <div class="">
+                                <h5 class="history-entry-category mb-1">@entry.Tag.Category.Name</h5>
+
+                                <ul class="list-unstyled mb-0">
+                                    <li class="badge badge-info category-tag">@entry.Tag.Name</li>
+                                </ul>
+                            </div>
+                            <h5 class="history-entry-amount my-auto ml-auto mr-5">@entry.Amount.ToString("C")</h5>
+                            <a asp-action="HistoryDelete" asp-route-id="@entry.Id" class="my-auto" data-delete-message="Are you sure you want to delete this entry?">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </div>
-                        <h5 class="history-entry-amount my-auto ml-auto mr-5">@entry.Amount.ToString("C")</h5>
-                        <a asp-action="HistoryDelete" asp-route-id="@entry.Id" class="my-auto" data-delete-message="Are you sure you want to delete this entry?">
-                            <i class="fas fa-trash"></i>
-                        </a>
-                    </div>
+                    }
                 }
             }
-        }
-        else
-        {
-            <h5 class="no-entries-label">Add some expenses to see more information here</h5>
-        }
+            else
+            {
+                <h5 class="no-entries-label">Add some expenses to see more information here</h5>
+            }
+        </div>
     </div>
+
+    <partial name="Footer" />
 </div>
 
 @section Scripts
-    {
+{
     <script src="~/js/reports.js"></script>
     <script src="~/js/logout.js"></script>
 }

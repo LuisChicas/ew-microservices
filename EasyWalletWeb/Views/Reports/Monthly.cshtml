@@ -1,37 +1,47 @@
 ﻿@model EasyWalletWeb.ViewModels.ReportsMonthly
 
 @section Styles
-    {
+{
     <link rel="stylesheet" href="~/css/reports.css" />
+    <link rel="stylesheet" href="~/css/report_monthly.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">
+    <partial name="NavBar" />
 
-<div class="reports-navbar shadow-sm">
-    <div class="reports-navbar-subcontainer mx-auto">
-        <a asp-action="Balance" class="p-2">Balance</a>
-        <a asp-action="Monthly" class="p-2 reports-navbar-selected">Monthly</a>
-        <a asp-action="History" class="p-2">History</a>
+    <div class="reports-navbar shadow-sm">
+        <div class="reports-navbar-subcontainer mx-auto">
+            <a asp-action="Balance" class="p-2">Balance</a>
+            <a asp-action="Monthly" class="p-2 reports-navbar-selected">Monthly</a>
+            <a asp-action="History" class="p-2">History</a>
+        </div>
     </div>
+
+    <div class="reports-main-container py-4">
+        <div class="monthly-container">
+            @foreach (var item in Model.Spends)
+            {
+                <h4 class="history-month mb-4">@item.Month.ToString("MMMM yyyy")</h4>
+
+                <table class="table">
+                    <tbody>
+                        @foreach (var spend in item.SpendsByCategory)
+                        {
+                            <tr>
+                                <td>@spend.Key</td>
+                                <td class="text-right">@spend.Value.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+
+    <partial name="Footer" />
 </div>
 
-<div class="reports-main-container pb-4">
-    <div class="reports-container" style="margin-top: -10px">
-        @foreach (var item in Model.Spends)
-        {
-            <h4 class="history-month mb-4">@item.Month.ToString("MMMM yyyy")</h4>
-
-            <table class="table">
-                <tbody>
-                    @foreach (var spend in item.SpendsByCategory)
-                    {
-                        <tr>
-                            <td>@spend.Key</td>
-                            <td>@spend.Value</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </div>
-</div>
+@section Scripts
+{
+    <script src="~/js/logout.js"></script>
+}
