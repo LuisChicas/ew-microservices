@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Home";
+
+    bool layoutEntrySavedAlert = Model != null && Model.PreviousEntrySaved;
 }
 
 @section Styles
@@ -9,32 +11,40 @@
     <link rel="stylesheet" href="~/css/wallet.css" />
 }
 
-<partial name="NavBar" />
+<div class="content">
+    <partial name="NavBar" />
 
-<div class="wallet-container">
-    @using (Html.BeginForm("Entry", "Wallet", FormMethod.Post, new { @class = "spend-form text-center" }))
-    {
-        <h1 class="h3 mb-4 font-weight-normal">Enter a expense</h1>
-
-        @if (!string.IsNullOrEmpty(Model?.Entry))
+    <div class="wallet-container">
+        @using (Html.BeginForm("Entry", "Wallet", FormMethod.Post, new { @class = "spend-form text-center" }))
         {
-            @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+            <h1 class="h3 mb-4 font-weight-normal">Add an entry</h1>
+
+            <div class="input-group">
+                <input type="text" id="Entry" name="Entry" class="form-control" value="@Model?.Entry" placeholder="Example: 'Super Market $20'" required>
+                <label for="inputSpend" class="sr-only">Spend</label>
+                <div class="input-group-append">
+                    <button class="btn btn-primary btn-block" type="submit">Add</button>
+                </div>
+            </div>
+            <input type="date" id="Date" name="Date" class="entry-date form-control mt-4" value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+            }
+            else
+            {
+                <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">Entry saved</div>
+            }
         }
 
-        <div class="input-group">
-            <input type="text" id="Entry" name="Entry" class="form-control" value="@Model?.Entry" placeholder="Write a tag and an amount. i.e.: 'Super Market $20'" required>
-            <label for="inputSpend" class="sr-only">Spend</label>
-            <div class="input-group-append">
-                <button class="btn btn-primary btn-block" type="submit">Add</button>
-            </div>
-        </div>
-        <input type="date" id="Date" name="Date" class="entry-date form-control mt-4" value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
-    }
-</div>
+    </div>
 
-<partial name="Footer" />
+    <partial name="Footer" />
+</div>
 
 @section Scripts
     {
+    <script src="~/js/wallet.js"></script>
     <script src="~/js/logout.js"></script>
 }

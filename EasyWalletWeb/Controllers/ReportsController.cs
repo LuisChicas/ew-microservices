@@ -22,6 +22,11 @@ namespace EasyWalletWeb.Controllers
 
         public IActionResult History()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("login");
+            }
+
             var entriesByMonth = GetEntries().GroupBy(e => new DateTime(e.Date.Year, e.Date.Month, 1));
 
             var entriesObject = new List<KeyValuePair<DateTime, List<Entry>>>();
@@ -56,6 +61,11 @@ namespace EasyWalletWeb.Controllers
 
         public IActionResult Monthly()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("login");
+            }
+
             var entriesByMonth = GetEntries().GroupBy(e => new DateTime(e.Date.Year, e.Date.Month, 1));
             var months = new List<MonthlyItem>();
             var month = new MonthlyItem();
@@ -89,6 +99,11 @@ namespace EasyWalletWeb.Controllers
 
         public IActionResult Balance()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("login");
+            }
+
             List<Entry> entries = GetEntries();
             List<Entry> expenses = entries.Where(e => e.Tag.Category.CategoryTypeId == Constants.ExpensesCategoryTypeID).ToList();
             List<Entry> incomes = entries.Where(e => e.Tag.Category.CategoryTypeId == Constants.IncomesCategoryTypeID).ToList();
@@ -110,7 +125,7 @@ namespace EasyWalletWeb.Controllers
             Entry entry;
 
             // Adds last month
-            if (entriesByMonth.ElementAt(0).Key.Month != DateTime.Now.Month)
+            if (entriesByMonth.Count() > 0 && entriesByMonth.ElementAt(0).Key.Month != DateTime.Now.Month)
             {
                 data.Months.Add(new KeyValuePair<DateTime, decimal>(
                     entriesByMonth.ElementAt(0).Key,

@@ -26,28 +26,26 @@
             @foreach (var category in Model.Categories)
             {
                 <div class="category">
-                    <div class="mr-auto">
-                        <h4 class="mb-3">@category.Name</h4>
-
-                        <ul class="list-unstyled">
-                            @foreach (var tag in category.Tags)
-                            {
-                                <li class="badge badge-info category-tag">@tag.Name</li>
-                            }
-                        </ul>
-                    </div>
-                    <div>
-                        <a asp-action="Edit" asp-route-id="@category.Id">
-                            <i class="fas fa-edit"></i>
-                        </a>
+                    <div class="mb-3">
+                        <h4 class="d-inline">@category.Name</h4>
 
                         @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID && category.Name != Constants.OthersCategoryName)
                         {
-                            <a asp-action="Delete" asp-route-id="@category.Id" data-delete-message="Are you sure you want to delete '@category.Name' and his tags?">
+                            <a asp-action="Delete" asp-route-id="@category.Id" class="float-right" data-delete-message="Are you sure you want to delete '@category.Name' and his tags?">
                                 <i class="fas fa-trash"></i>
                             </a>
                         }
+
+                        <a asp-action="Edit" asp-route-id="@category.Id" class="float-right">
+                            <i class="fas fa-edit"></i>
+                        </a>
                     </div>
+                    <ul class="list-unstyled d-block mb-0">
+                        @foreach (var tag in category.Tags)
+                        {
+                            <li class="badge badge-info category-tag">@tag.Name</li>
+                        }
+                    </ul>
                 </div>
             }
         </div>

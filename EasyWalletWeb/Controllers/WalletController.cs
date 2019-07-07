@@ -16,8 +16,8 @@ namespace EasyWalletWeb.Controllers
     {
         private readonly DatabaseContext _context;
 
-        private const string InvalidEntryFeedback = "Please provide a tag name and an amount of money spent, separated by a space. I.e.: \"Super market $20\"";
-        private const string InvalidAmountFeedback  = "Please provide a valid amount of money spent";
+        private const string InvalidEntryFeedback = "Please provide a tag name and an amount of money.";
+        private const string InvalidAmountFeedback  = "Please provide a valid amount of money.";
 
         public WalletController(DatabaseContext context)
         {
@@ -28,7 +28,7 @@ namespace EasyWalletWeb.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                return RedirectToRoute("home");
+                return RedirectToRoute("login");
             }
 
             return View();
@@ -37,6 +37,11 @@ namespace EasyWalletWeb.Controllers
         [HttpPost]
         public IActionResult Entry(WalletEntry form)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToRoute("login");
+            }
+
             string entryText = form.Entry;
             if (string.IsNullOrEmpty(entryText))
             {
@@ -114,7 +119,7 @@ namespace EasyWalletWeb.Controllers
 
             _context.Entries.Add(entry);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return View("Index", new WalletEntry { PreviousEntrySaved = true });
         }
     }
 }

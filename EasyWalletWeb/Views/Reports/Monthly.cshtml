@@ -17,23 +17,31 @@
         </div>
     </div>
 
-    <div class="reports-main-container py-4">
+    <div class="reports-main-container">
         <div class="monthly-container">
-            @foreach (var item in Model.Spends)
+            @if (Model.Spends != null && Model.Spends.Count > 0)
             {
-                <h4 class="history-month mb-4">@item.Month.ToString("MMMM yyyy")</h4>
+                @foreach (var item in Model.Spends)
+                {
+                    <h4 class="history-month mt-5 mb-4">@item.Month.ToString("MMMM yyyy")</h4>
 
-                <table class="table">
-                    <tbody>
-                        @foreach (var spend in item.SpendsByCategory)
-                        {
-                            <tr>
-                                <td>@spend.Key</td>
-                                <td class="text-right">@spend.Value.ToString("C")</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                    <table class="table">
+                        <tbody>
+                            @foreach (var spend in item.SpendsByCategory)
+                            {
+                                <tr>
+                                    <td>@spend.Key</td>
+                                    <td class="text-right">@spend.Value.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+            else
+            {
+                <h5 class="no-entries-label">Add some entries to see more information here.</h5>
+                <a asp-route="wallet">Add the first one</a>
             }
         </div>
     </div>

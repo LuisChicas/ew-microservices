@@ -2,30 +2,37 @@
 
 @{
     ViewData["Title"] = "Login";
- }
+}
 
-<div class="sw-navbar shadow-sm d-flex align-items-center p-3 px-5">
-    <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
-    <h4 class="my-0 mr-auto" style="color:white">Simple Wallet</h4>
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/auth.css" />
+}
+
+<div class="content">
+    <div class="sw-navbar shadow-sm d-flex align-items-center p-3 px-5">
+        <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
+        <h4 class="my-1 mr-auto" style="color:white">Simple Wallet</h4>
+    </div>
+
+    <div class="login-container">
+        <form class="form-auth form-signin text-center" action="Login" method="post">
+            <img class="mb-4" src="~/images/appicon.png" alt="logo" width="100" height="100">
+            <h1 class="h3 mb-4 font-weight-normal">Please login</h1>
+
+            @if (!string.IsNullOrEmpty(Model?.Email))
+            {
+                @Html.ValidationSummary("", new { @class = "alert alert-danger" })
+            }
+
+            <label for="Email" class="sr-only">Email address</label>
+            <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required autofocus>
+            <label for="Password" class="sr-only">Password</label>
+            <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Login</button>
+            <span class="signup-in-login">Don't have an account? <a asp-route="signup">Sign up</a></span>
+        </form>
+    </div>
+
+    <partial name="Footer" />
 </div>
-
-<div class="login-container">
-    <form class="form-auth form-signin text-center" action="Login" method="post">
-        <img class="mb-4" src="~/images/appicon.png" alt="logo" width="100" height="100">
-        <h1 class="h3 mb-4 font-weight-normal">Please login</h1>
-
-        @if (!string.IsNullOrEmpty(Model?.Email))
-        {
-            @Html.ValidationSummary("", new { @class = "alert alert-danger" })
-        }
-
-        <label for="Email" class="sr-only">Email address</label>
-        <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required autofocus>
-        <label for="Password" class="sr-only">Password</label>
-        <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Login</button>
-        <span class="signup-in-login">Don't have an account? <a asp-route="signup">Sign up</a></span>
-    </form>
-</div>
-
-<partial name="Footer"/>

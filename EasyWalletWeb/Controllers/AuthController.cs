@@ -142,7 +142,7 @@ namespace EasyWalletWeb.Controllers
         public async Task<ActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToRoute("home");
+            return RedirectToRoute("login");
         }
     }
 }
