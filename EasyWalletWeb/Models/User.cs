@@ -17,6 +17,8 @@ namespace EasyWalletWeb.Models
         public string Email { get; set; }
         [MaxLength(511)]
         public string PasswordHash { get; set; }
+
+        public DateTime CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
 
         public List<Category> Categories { get; set; }

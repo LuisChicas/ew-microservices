@@ -24,7 +24,13 @@ namespace EasyWalletWeb.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var categories = _context.Categories.Include(c => c.Tags)
                 .Where(c => c.UserId == int.Parse(userId) && c.DeletedAt == null)
+                .OrderByDescending(c => c.CreatedAt)
                 .ToList();
+
+            foreach (var c in categories)
+            {
+                c.Tags = c.Tags.Where(t => t.DeletedAt == null).ToList();
+            }
 
             return View(new CategoriesIndex { Categories = categories });
         }
@@ -55,12 +61,16 @@ namespace EasyWalletWeb.Controllers
                     "Tags", 
                     string.Format("The tag '{0}' already exists in other category", duplicatedTag.Name)
                 );
-                return View(form);
+
+                form.IsNew = true;
+                return View("Form", form);
             }
 
             var category = new Category();
             category.UserId = userId;
             category.Name = form.Name;
+            category.CreatedAt = DateTime.UtcNow;
+
             _context.Categories.Add(category);
             _context.SaveChanges();
 
@@ -77,6 +87,8 @@ namespace EasyWalletWeb.Controllers
                     tag = new Tag();
                     tag.CategoryId = categoryId;
                     tag.Name = t.Name;
+                    tag.CreatedAt = DateTime.UtcNow;
+
                     _context.Tags.Add(tag);
                 }
             }

@@ -1,26 +1,122 @@
 ﻿.row img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
 }
 
+#intro-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #e7e7e7;
+}
+
+#intro-container img {
+    margin: 20px;
+}
+
+#intro-container p {
+    margin-bottom: 2.2rem;
+    font-size: 1.3rem;
+}
+
 .intro-btn {
-    /*
-    margin-left: 20%;
-    width: 60%;
-    */
+    margin-left: 25%;
+    width: 50%;
+    margin-bottom: 3rem;
+}
+
+#features-container {
+    background-color: #eee;
 }
 
 #features-container .row {
-    margin-top: 50px;
+    margin-top: 70px;
 }
 
 .feature-text {
-    font-size: 1.2rem;
-    margin-top: 30px;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 
-@media only screen and (min-width: 426px) {
-    [class~="intro-btn"] {
+.feature-image {
+    margin-left: 5%;
+}
+
+.features-btn {
+    font-size: 1.1rem;
+    margin-left: 25%;
+    width: 50%;
+    margin-top: 4.5rem;
+    margin-bottom: 3rem;
+}
+
+div .small-screen-only {
+    margin-bottom: 20px;
+}
+
+.big-screen-only {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .small-screen-only {
+        display: none;
     }
+
+    [class~="big-screen-only"] {
+        display: block;
+    }
+
+    [class~="intro-btn"] {
+        margin-left: 0;
+        width: unset;
+        margin-bottom: 0;
+    }
+
+    [class~="feature-text"] {
+        margin-top: 25px;
+        margin-bottom: 0;
+    }
+
+    .feature-odd-text {
+        margin-left: 30px;
+    }
+
+    .feature-even-text {
+        margin-right: 30px;
+    }
+
+    .feature-odd-image {
+        margin-left: 0;
+    }
+
+    [class~="feature-even-image"] {
+        margin-left: 10%;
+    }
+
+    [class~="features-btn"] {
+        margin-top: 5.5rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    [class~="feature-text"] {
+        margin-top: 60px;
+    }
+
+    [class~="features-btn"] {
+        margin-left: 30%;
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    [class~="feature-text"] {
+        margin-top: 80px;
+    }
+}
+
+footer {
+    background-color: #eee;
 }

@@ -1,6 +1,11 @@
-Keeping app alive on production server:
+New Migration
 
-https://jakeydocs.readthedocs.io/en/latest/publishing/linuxproduction.html
+- In Package Manager Console: "Add-Migration [Description]"
+- In Package Manager Console: "Update-Database"
+
+Keeping app alive on production server
+
+- https://jakeydocs.readthedocs.io/en/latest/publishing/linuxproduction.html
 
 ---- RELEASE PROCESS ----
 
@@ -10,7 +15,7 @@ https://jakeydocs.readthedocs.io/en/latest/publishing/linuxproduction.html
 
 3. In server's project folder root, run "chmod 755 EasyWalletWeb".
 
-4. Not sure if "sudo service supervisor restart" is needed.
+4. At server: "sudo service supervisor restart".
 
 3. dotnet ef migrations script
 

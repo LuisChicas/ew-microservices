@@ -1,10 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 
-    var img1 = "https://www.psdmockups.com/wp-content/uploads/2018/01/MacBook-Pro-Laptop-Computer-Retina-Display-PSD-Mockup-1024x772.jpg";
-    var img2 = "https://designshack.net/wp-content/uploads/Minimalist-Laptop-Mockup-Template.jpg";
-    var img3 = "https://designshack.net/wp-content/uploads/Woman-using-Laptop-mockup-Template.jpg";
-    var img4 = "https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/5723166/600/400/m2/fpnw/wm0/laptop-mockup-.jpg?1547847253&s=c30e18b7f681347a84c0005bad5815ba";
+    var featuresText1 = "Create categories and keywords of the things you spend the most.";
+    var featuresText2 = "Start tracking your spendings by just typing a keyword and an amount!";
+    var featuresText3 = "Get and analyze many automatic reports with the data you need to know.";
 }
 
 @section Styles
@@ -13,46 +12,60 @@
 }
 
 <div class="sw-navbar shadow-sm d-flex align-items-center p-2 px-5">
-    <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
-    <h4 class="my-0 mr-auto" style="color:white">Simple Wallet</h4>
+    <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
+    <a asp-route="home" class="mr-auto"><h4 class="my-0" style="color:white">Simple Wallet</h4></a>
     <a asp-route="login" class="p-2 mr-2 text-light">Log in</a>
     <a asp-route="signup" class="btn btn-light">Sign Up</a>
 </div>
 
-<div id="intro-container" style="background-color: #ffdddd">
+<div id="intro-container">
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="my-4">Improve your personal finances</h1>
-                <p class="mb-4">This awesome product let you achieve all your dreams by paying a bit of money.</p>
-                <a asp-route="signup" class="btn btn-primary intro-btn mb-5 px-4">Get Started</a>
+                <h1 class="mb-4">Improve your personal finances</h1>
+                <p>Try the quickest and easiest way to track where your money goes.</p>
+                <a asp-route="signup" class="btn btn-primary intro-btn px-4">Get Started - It's Free!</a>
             </div>
             <div class="col-md-6 overflow-hidden">
-                <img src="@img1" />
+                <img src="~/images/devices.jpg" />
             </div>
         </div>
     </div>
 </div>
 
-<div id="features-container" style="background-color: #eee">
+<div id="features-container">
     <div class="container py-5">
-        <h3 class="text-center mb-4">Your simpler way to organize your finance</h3>
+        <h3 class="text-center mb-4">Get powerful reports in 3 simple steps</h3>
         <div class="row">
-            <div class="col-sm-6">
-                <p class="feature-text">Create Categories you feel comfortable with, and those that are important to you.</p>
+            <div class="col-md-6">
+                <p class="feature-text feature-odd-text big-screen-only">@featuresText1</p>
             </div>
-            <div class="col-sm-6 overflow-hidden">
-                <img src="@img2" />
+            <div class="col-md-6 overflow-hidden">
+                <img src="~/images/categories.jpg" class="feature-image feature-odd-image" />
+            </div>
+        </div>
+        <div>
+            <p class="feature-text feature-odd-text small-screen-only">@featuresText1</p>
+        </div>
+        <div class="row">
+            <div class="col-md-6 overflow-hidden">
+                <img src="~/images/entry.jpg" class="feature-image feature-even-image" />
+            </div>
+            <div class="col-md-6">
+                <p class="feature-text feature-even-text">@featuresText2</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 overflow-hidden">
-                <img src="@img3" />
+            <div class="col-md-6">
+                <p class="feature-text feature-odd-text big-screen-only">@featuresText3</p>
             </div>
-            <div class="col-sm-6">
-                <p class="feature-text">Start tracking your spendings easy! Just write the tag of the thing you spent on, the amount you spent.</p>
+            <div class="col-md-6 overflow-hidden">
+                <img src="~/images/reports.jpg" class="feature-image feature-odd-image" />
             </div>
         </div>
+        <p class="feature-text feature-odd-text small-screen-only">@featuresText3</p>
+
+        <a asp-route="signup" class="btn btn-primary features-btn px-4">Get Started!</a>
     </div>
 </div>
 

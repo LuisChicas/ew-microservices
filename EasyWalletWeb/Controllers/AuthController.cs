@@ -76,6 +76,7 @@ namespace EasyWalletWeb.Controllers
             user.Name = form.Name;
             user.Email = form.Email;
             user.SetPassword(form.Password);
+            user.CreatedAt = DateTime.UtcNow;
 
             _context.Users.Add(user);
             _context.SaveChanges();
@@ -116,11 +117,13 @@ namespace EasyWalletWeb.Controllers
             others.Name = "Others";
             others.UserId = userId;
             others.CategoryTypeId = Constants.ExpensesCategoryTypeID;
+            others.CreatedAt = DateTime.UtcNow;
 
             var incomes = new Category();
             incomes.Name = "Incomes";
             incomes.UserId = userId;
             incomes.CategoryTypeId = Constants.IncomesCategoryTypeID;
+            incomes.CreatedAt = DateTime.UtcNow;
 
             _context.Categories.Add(others);
             _context.Categories.Add(incomes);

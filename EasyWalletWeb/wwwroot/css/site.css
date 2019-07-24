@@ -37,7 +37,6 @@
 
 .sw-navbar-mobile {
     display: flex;
-    background-color: #81AAD6;
 }
 
 .sw-navbar-mobile-btn {
@@ -51,7 +50,19 @@
     border-style: solid;
     border-width: 1px;
     border-color: #8282B0;
+    background-color: #81AAD6;
     opacity: 0.8;
+}
+
+.sw-navbar-mobile-btn:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.sw-navbar-mobile-btn:active {
+    text-decoration: none;
+    color: white;
+    background-color: #618AB6;
 }
 
 .sw-navbar-mobile-extra div {

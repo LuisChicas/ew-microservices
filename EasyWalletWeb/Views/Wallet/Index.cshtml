@@ -4,6 +4,21 @@
     ViewData["Title"] = "Home";
 
     bool layoutEntrySavedAlert = Model != null && Model.PreviousEntrySaved;
+
+    string entrySavedEmoji = "";
+
+    if (DateTime.Now.Second % 3 == 0)
+    {
+        entrySavedEmoji = "👍";
+    }
+    else if (DateTime.Now.Second % 2 == 0)
+    {
+        entrySavedEmoji = "👌";
+    }
+    else
+    {
+        entrySavedEmoji = "🙌";
+    }
 }
 
 @section Styles
@@ -34,7 +49,7 @@
             }
             else
             {
-                <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">Entry saved</div>
+                <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">Entry saved @entrySavedEmoji</div>
             }
         }
 

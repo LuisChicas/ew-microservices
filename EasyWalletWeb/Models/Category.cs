@@ -14,6 +14,7 @@ namespace EasyWalletWeb.Models
 
         [MaxLength(255)]
         public string Name { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
 
         public User User { get; set; }
