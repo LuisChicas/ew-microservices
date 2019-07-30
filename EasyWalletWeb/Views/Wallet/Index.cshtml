@@ -34,6 +34,14 @@
         {
             <h1 class="h3 mb-4 font-weight-normal">Add an entry</h1>
 
+            <div id="non-android-feedback" class="entry-format-feedback">
+                <span id="format-keyword">keyword</span>
+                <span id="format-amount"> + amount </span>
+                <span id="format-check">
+                    <i class="fas fa-check format-valid"></i>
+                </span>
+            </div>
+
             <div class="input-group">
                 <input type="text" id="Entry" name="Entry" class="form-control" value="@Model?.Entry" placeholder="Example: 'Super Market $20'" required>
                 <label for="inputSpend" class="sr-only">Spend</label>
@@ -41,6 +49,15 @@
                     <button class="btn btn-primary btn-block" type="submit">Add</button>
                 </div>
             </div>
+
+            <div id="android-feedback" class="entry-format-feedback">
+                <span id="format-keyword">keyword</span>
+                <span id="format-amount"> + amount </span>
+                <span id="format-check">
+                    <i class="fas fa-check format-valid"></i>
+                </span>
+            </div>
+
             <input type="date" id="Date" name="Date" class="entry-date form-control mt-4" value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
 
             @if (!ViewData.ModelState.IsValid)
@@ -61,5 +78,6 @@
 @section Scripts
     {
     <script src="~/js/wallet.js"></script>
+    <script src="~/js/entryFormatFeedback.js"></script>
     <script src="~/js/logout.js"></script>
 }

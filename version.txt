@@ -1,0 +1,18 @@
+0.2.1
+
+- More flexible input texts for Entries.
+- Realtime feedback for Entries' input.
+- Hides auto-generated keywords in Categories page.
+
+0.2
+
+- Landing page.
+- Entry saved feedback.
+
+0.1.1
+
+- Mobile version of the whole site.
+
+0.1
+
+- Auth, Entries, Categories, Tags, Reports.

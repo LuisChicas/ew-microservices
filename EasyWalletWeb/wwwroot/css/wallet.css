@@ -33,18 +33,29 @@ footer {
     margin-right: auto;
 }
 
+.entry-format-feedback {
+    visibility: hidden;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.entry-format-feedback span {
+    color: #bbb;
+}
+
+.entry-format-feedback span:last-child {
+    display: none;
+    font-weight: bold;
+}
+
+.format-valid {
+    color: #5d5 !important;
+    font-weight: bold;
+}
+
 .wallet-container .alert {
     margin: 3rem auto -1.5rem auto;
     width: fit-content;
-}
-
-#entry-saved-alert {
-    /*
-    font-size: 1.2rem;
-    color: #23903c;
-    margin-top: 3rem;
-    margin-bottom: -1.5rem;
-    */
 }
 
 .alert ul {
