@@ -9,16 +9,19 @@ using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace EasyWalletWeb.Controllers
 {
     public class AuthController : Controller
     {
         private readonly DatabaseContext _context;
+        private readonly IStringLocalizer<AuthController> _localizer;
 
-        public AuthController(DatabaseContext context)
+        public AuthController(DatabaseContext context, IStringLocalizer<AuthController> localizer)
         {
             _context = context;
+            _localizer = localizer;
         }
 
         public IActionResult Login()
@@ -38,13 +41,13 @@ namespace EasyWalletWeb.Controllers
             if (user == null)
             {
                 Models.User.FakeHash();
-                ModelState.AddModelError("Email", "Invalid email or password");
+                ModelState.AddModelError("Email", _localizer["InvalidEmailPassword"]);
                 return View(form);
             }
 
             if (!user.CheckPassword(form.Password))
             {
-                ModelState.AddModelError("Email", "Invalid email or password");
+                ModelState.AddModelError("Email", _localizer["InvalidEmailPassword"]);
                 return View(form);
             }
 
@@ -68,7 +71,7 @@ namespace EasyWalletWeb.Controllers
         {
             if (_context.Users.Any(u => u.Email == form.Email))
             {
-                ModelState.AddModelError("Email", "This email is already registered");
+                ModelState.AddModelError("Email", _localizer["EmailAlreadyRegistered"]);
                 return View(form);
             }
 
@@ -114,13 +117,13 @@ namespace EasyWalletWeb.Controllers
         private void SaveDefaultData(int userId)
         {
             var others = new Category();
-            others.Name = "Others";
+            others.Name = _localizer["Others"];
             others.UserId = userId;
             others.CategoryTypeId = Constants.ExpensesCategoryTypeID;
             others.CreatedAt = DateTime.UtcNow;
 
             var incomes = new Category();
-            incomes.Name = "Incomes";
+            incomes.Name = _localizer["Incomes"];
             incomes.UserId = userId;
             incomes.CategoryTypeId = Constants.IncomesCategoryTypeID;
             incomes.CreatedAt = DateTime.UtcNow;
@@ -129,11 +132,11 @@ namespace EasyWalletWeb.Controllers
             _context.Categories.Add(incomes);
 
             var othersTag = new Tag();
-            othersTag.Name = "Others";
+            othersTag.Name = _localizer["Others"];
             othersTag.CategoryId = others.Id;
 
             var incomeTag = new Tag();
-            incomeTag.Name = "Income";
+            incomeTag.Name = _localizer["Income"];
             incomeTag.CategoryId = incomes.Id;
 
             _context.Tags.Add(othersTag);

@@ -1,7 +1,11 @@
-﻿@model EasyWalletWeb.ViewModels.ReportsBalance
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model EasyWalletWeb.ViewModels.ReportsBalance
+
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Balance";
+    ViewData["Title"] = Localizer["Balance"];
 }
 
 @section Styles
@@ -15,16 +19,16 @@
 
     <div class="reports-navbar shadow-sm">
         <div class="reports-navbar-subcontainer mx-auto">
-            <a asp-action="Balance" class="p-2 reports-navbar-selected">Balance</a>
-            <a asp-action="Monthly" class="p-2">Monthly</a>
-            <a asp-action="History" class="p-2">History</a>
+            <a asp-action="Balance" class="p-2 reports-navbar-selected">@Localizer["Balance"]</a>
+            <a asp-action="Monthly" class="p-2">@Localizer["Monthly"]</a>
+            <a asp-action="History" class="p-2">@Localizer["History"]</a>
         </div>
     </div>
 
     <div class="reports-main-container py-4">
         <div class="balance-container">
             <div class="balance-title-container my-5">
-                <h5 class="mr-auto balance-title">Current Balance</h5>
+                <h5 class="mr-auto balance-title">@Localizer["CurrentBalance"]</h5>
                 <h2 class="ml-auto balance-title">@Model.CurrentBalance.ToString("C")</h2>
             </div>
 

@@ -1,4 +1,8 @@
-﻿@model EasyWalletWeb.ViewModels.AuthSignup
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model EasyWalletWeb.ViewModels.AuthSignup
+
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Sign Up";
@@ -18,24 +22,24 @@
     <div class="login-container">
         <form class="form-auth form-signup text-center" action="Signup" method="post">
             <img class="mb-4" src="~/images/appicon.png" alt="logo" width="100" height="100">
-            <h1 class="h3 mb-4 font-weight-normal">Sign up</h1>
+            <h1 class="h3 mb-4 font-weight-normal">@Localizer["SignupTitle"]</h1>
 
             @if (!string.IsNullOrEmpty(Model?.Email))
             {
                 @Html.ValidationSummary("", new { @class = "alert alert-danger" })
             }
 
-            <label for="Name" class="sr-only">Name</label>
-            <input type="text" id="Name" name="Name" class="form-control" placeholder="Name (optional)" autofocus>
-            <label for="Email" class="sr-only">Email address</label>
-            <input type="email" id="Email" name="Email" class="form-control" placeholder="Email address" required>
-            <label for="Password" class="sr-only">Password</label>
-            <input type="password" id="Password" name="Password" class="form-control" placeholder="Password" required>
-            <label for="RepeatPassword" class="sr-only">Repeat Password</label>
-            <input type="password" id="RepeatPassword" class="form-control" placeholder="Repeat password" required>
-            <small class="form-text text-muted">Your password must have at least 6 characters</small>
-            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" value="Signup">Sign up</button>
-            <span class="signup-in-login">Already have an account? <a asp-route="login">Login</a></span>
+            <label for="Name" class="sr-only">@Localizer["Name"]</label>
+            <input type="text" id="Name" name="Name" class="form-control" placeholder="@Localizer["NameOptional"]" autofocus>
+            <label for="Email" class="sr-only">@Localizer["EmailAddress"]</label>
+            <input type="email" id="Email" name="Email" class="form-control" placeholder="@Localizer["EmailAddress"]" required>
+            <label for="Password" class="sr-only">@Localizer["Password"]</label>
+            <input type="password" id="Password" name="Password" class="form-control" placeholder="@Localizer["Password"]" required>
+            <label for="RepeatPassword" class="sr-only">@Localizer["RepeatPassword"]</label>
+            <input type="password" id="RepeatPassword" class="form-control" placeholder="@Localizer["RepeatPassword"]" required>
+            <small class="form-text text-muted">@Localizer["PasswordMustHave"]</small>
+            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" value="Signup">@Localizer["Signup"]</button>
+            <span class="signup-in-login">@Localizer["HaveAnAccount"] <a asp-route="login">@Localizer["Login"]</a></span>
         </form>
     </div>
 

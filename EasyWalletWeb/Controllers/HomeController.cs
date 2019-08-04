@@ -5,6 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EasyWalletWeb.Models;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Http;
+using System.Globalization;
+using System.Threading;
 
 namespace EasyWalletWeb.Controllers
 {
@@ -34,6 +38,20 @@ namespace EasyWalletWeb.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string language, string returnUrl)
+        {
+            var culture = new RequestCulture(language);            
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(culture),
+                new CookieOptions { IsEssential = true }
+            );
+
+            return LocalRedirect(returnUrl);
         }
     }
 }

@@ -1,7 +1,11 @@
-﻿@model EasyWalletWeb.ViewModels.CategoriesForm
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model EasyWalletWeb.ViewModels.CategoriesForm
+
+@inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = Model.IsNew ? "New Category" : "Edit Category";
+    ViewData["Title"] = Model.IsNew ? Localizer["NewCategoryTitle"] : Localizer["EditCategoryTitle"];
 }
 
 @section Styles
@@ -9,34 +13,34 @@
     <link rel="stylesheet" href="~/css/categories.css" />
 }
 
-<div class="content">    
+<div class="content">
     <partial name="NavBar" />
 
     <div class="categories-main-container">
         <div class="categories-container">
-            <h3 class="mb-4">@(Model.IsNew ? "New category" : "Edit " + Model.Name)</h3>
+            <h3 class="mb-4">@(Model.IsNew ? Localizer["NewCategory"].Value : string.Format("{0} {1}", Localizer["Edit"].Value, Model.Name))</h3>
             <form action="@(Model.IsNew ? "New" : "Edit")" method="post">
 
                 @if (!Model.IsNew)
                 {
                     @Html.HiddenFor(c => c.Id)
                 }
-                
+
                 @if (!ViewData.ModelState.IsValid)
                 {
                     @Html.ValidationSummary("", new { @class = "alert alert-danger" })
                 }
-                
-                <h5>Name</h5>
 
-                <label for="Name" class="sr-only">Name</label>
-                <input id="Name" name="Name" type="text" placeholder="Name" class="form-control mb-3" required autofocus value="@Model.Name" />
-                <h5>Tags</h5>
+                <h5>@Localizer["Name"].Value</h5>
+
+                <label for="Name" class="sr-only">@Localizer["Name"]</label>
+                <input id="Name" name="Name" type="text" placeholder="@Localizer["Name"]" class="form-control mb-3" required autofocus value="@Model.Name" />
+                <h5>@Localizer["Keywords"]</h5>
                 <div class="input-group mb-3">
-                    <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="Write a tag and click 'Add'">
-                    <label for="tags-input" class="sr-only">Tags</label>
+                    <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="@Localizer["EnterKeyword"]">
+                    <label for="tags-input" class="sr-only">@Localizer["Keywords"]</label>
                     <div class="input-group-append">
-                        <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">Add</button>
+                        <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">@Localizer["Add"]</button>
                     </div>
                 </div>
                 <ul id="tags-container" class="list-unstyled">
@@ -58,7 +62,7 @@
                         }
                     }
                 </ul>
-                <button class="btn btn-primary new-category-add-btn" type="submit">@(Model.IsNew ? "Add category" : "Update")</button>
+                <button class="btn btn-primary new-category-add-btn" type="submit">@(Model.IsNew ? Localizer["AddCategory"].Value : Localizer["Save"].Value)</button>
             </form>
         </div>
     </div>

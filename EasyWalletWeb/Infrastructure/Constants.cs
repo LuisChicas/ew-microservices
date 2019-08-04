@@ -9,6 +9,7 @@ namespace EasyWalletWeb.Infrastructure
     {
         public const int ExpensesCategoryTypeID = 1;
         public const int IncomesCategoryTypeID = 2;
-        public const string OthersCategoryName = "Others";
+        public const string OthersCategoryNameEN = "Others";
+        public const string OthersCategoryNameES = "Otros";
     }
 }

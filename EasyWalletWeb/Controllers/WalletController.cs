@@ -9,17 +9,20 @@ using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 
 namespace EasyWalletWeb.Controllers
 {
     //[Authorize]
     public class WalletController : Controller
     {
-        private readonly DatabaseContext _context;        
-
-        public WalletController(DatabaseContext context)
+        private readonly DatabaseContext _context;
+        private readonly IStringLocalizer<WalletController> _localizer;        
+        
+        public WalletController(DatabaseContext context, IStringLocalizer<WalletController> localizer)
         {
             _context = context;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -40,7 +43,7 @@ namespace EasyWalletWeb.Controllers
                 return RedirectToRoute("login");
             }
 
-            EntryValidatorResult result = EntryValidator.Validate(form.Entry);
+            EntryValidatorResult result = EntryValidator.Validate(form.Entry, _localizer);
 
             if (!result.IsValid)
             {
@@ -70,7 +73,7 @@ namespace EasyWalletWeb.Controllers
 
             if (tagId == default(int))
             {
-                var othersCategory = categories.First(c => c.Name == "Others");
+                var othersCategory = categories.First(c => c.Name == "Others" || c.Name == "Otros");
                 var tag = new Tag();
                 tag.Name = result.Keyword;
                 tag.CategoryId = othersCategory.Id;

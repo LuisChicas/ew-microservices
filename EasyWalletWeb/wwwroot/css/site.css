@@ -79,6 +79,24 @@
     font-size: 1rem !important;
 }
 
+.language-selection {
+    float: right;
+}
+
+.language-selection i {
+    margin-right: 2px;
+}
+
+.language-selection span {
+    font-size: 0.9rem;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.language-selection a {
+    color: #6c757d;
+}
+
 @media only screen and (min-width: 426px) {
     [class~="sw-navbar"] {
         padding-left: 3rem !important;

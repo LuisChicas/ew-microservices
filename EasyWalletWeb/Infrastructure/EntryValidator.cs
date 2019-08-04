@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EasyWalletWeb.Controllers;
+using Microsoft.Extensions.Localization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,17 +9,14 @@ namespace EasyWalletWeb.Infrastructure
 {
     public class EntryValidator
     {
-        private const string InvalidEntryMessage = "Please provide a tag name and an amount of money.";
-        private const string InvalidAmountMessage = "Please provide a valid amount of money.";
-
-        public static EntryValidatorResult Validate(string entry)
+        public static EntryValidatorResult Validate(string entry, IStringLocalizer<WalletController> localizer)
         {
             if (string.IsNullOrEmpty(entry))
             {
                 return new EntryValidatorResult
                 {
                     IsValid = false,
-                    ErrorMessage = InvalidEntryMessage
+                    ErrorMessage = localizer["ProvideKeywordAndAmount"]
                 };
             }
 
@@ -28,7 +27,7 @@ namespace EasyWalletWeb.Infrastructure
                 return new EntryValidatorResult
                 {
                     IsValid = false,
-                    ErrorMessage = InvalidEntryMessage
+                    ErrorMessage = localizer["ProvideKeywordAndAmount"]
                 };
             }
 
@@ -47,7 +46,7 @@ namespace EasyWalletWeb.Infrastructure
                 return new EntryValidatorResult
                 {
                     IsValid = false,
-                    ErrorMessage = InvalidAmountMessage
+                    ErrorMessage = localizer["ProvideValidAmount"]
                 };
             }
 

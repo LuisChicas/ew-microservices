@@ -1,5 +1,28 @@
-﻿<footer class="border-top footer text-muted py-2">
+﻿@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    var culture = Context.Features.Get<IRequestCultureFeature>();
+
+    var isEnglishSelected = culture.RequestCulture.Culture.TwoLetterISOLanguageName == "en";
+}
+
+<footer class="border-top footer text-muted py-2">
     <div class="container">
-        &copy; @DateTime.UtcNow.Year - Simple Wallet  <span style="font-size: 0.9rem">by <a href="http://www.luischicas.com">Luis Chicas</a></span>
+        &copy; @DateTime.UtcNow.Year - Simple Wallet
+        <span style="font-size: 0.9rem">@Localizer["By"] <a href="http://www.luischicas.com">Luis Chicas</a></span>
+
+        <span class="language-selection">
+            <i class="fas fa-globe"></i>
+            <span class=@(isEnglishSelected ? "font-weight-bold" : "")>
+                <a id="lang-en" asp-route="language">EN</a>
+            </span>
+            <span> | </span>
+            <span class=@(isEnglishSelected ? "" : "font-weight-bold")>
+                <a id="lang-es" asp-route="language">ES</a>
+            </span>
+        </span>
     </div>
 </footer>

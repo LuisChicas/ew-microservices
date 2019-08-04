@@ -1,9 +1,14 @@
-﻿@using EasyWalletWeb.Infrastructure
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EasyWalletWeb.Infrastructure
 
 @model EasyWalletWeb.ViewModels.CategoriesIndex
 
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Categories";
+    ViewData["Title"] = Localizer["Categories"];
+
+    string deleteMessage = Localizer["AreYouSureDeleteCategory1"].Value + "{0}" + @Localizer["AreYouSureDeleteCategory2"].Value;
 }
 
 @section Styles
@@ -17,10 +22,10 @@
     <div class="categories-main-container">
         <div class="categories-container">
             <div class="categories-header mb-4">
-                <h2>Categories</h2>
+                <h2>@Localizer["Categories"]</h2>
                 <a class="btn category-add-btn" asp-controller="Categories" asp-action="New">
                     <i class="fas fa-plus"></i>
-                    Add category
+                    @Localizer["AddCategory"]
                 </a>
             </div>
             @foreach (var category in Model.Categories)
@@ -29,9 +34,11 @@
                     <div class="mb-3">
                         <h4 class="d-inline">@category.Name</h4>
 
-                        @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID && category.Name != Constants.OthersCategoryName)
+                        @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID
+                           && category.Name != Constants.OthersCategoryNameEN
+                           && category.Name != Constants.OthersCategoryNameES)
                         {
-                            <a asp-action="Delete" asp-route-id="@category.Id" class="float-right" data-delete-message="Are you sure you want to delete '@category.Name' and his tags?">
+                            <a asp-action="Delete" asp-route-id="@category.Id" class="float-right" data-delete-message="@string.Format(deleteMessage, category.Name)">
                                 <i class="fas fa-trash"></i>
                             </a>
                         }

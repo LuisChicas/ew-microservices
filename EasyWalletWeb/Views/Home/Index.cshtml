@@ -1,9 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 
-    var featuresText1 = "Create categories and keywords of the things you spend the most.";
-    var featuresText2 = "Start tracking your spendings by just typing a keyword and an amount!";
-    var featuresText3 = "Get and analyze many automatic reports with the data you need to know.";
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Home Page";
 }
 
 @section Styles
@@ -14,17 +14,17 @@
 <div class="sw-navbar shadow-sm d-flex align-items-center p-2 px-5">
     <a asp-route="home"><img src="~/images/logo.png" class="mr-3" width="35" height="30" /></a>
     <a asp-route="home" class="mr-auto"><h4 class="my-0" style="color:white">Simple Wallet</h4></a>
-    <a asp-route="login" class="p-2 mr-2 text-light">Log in</a>
-    <a asp-route="signup" class="btn btn-light">Sign Up</a>
+    <a asp-route="login" class="p-2 mr-2 text-light">@Localizer["Login"]</a>
+    <a asp-route="signup" class="btn btn-light">@Localizer["Signup"]</a>
 </div>
 
 <div id="intro-container">
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="mb-4">Improve your personal finances</h1>
-                <p>Try the quickest and easiest way to track where your money goes.</p>
-                <a asp-route="signup" class="btn btn-primary intro-btn px-4">Get Started - It's Free!</a>
+                <h1 class="mb-4">@Localizer["IntroTitle"]</h1>
+                <p>@Localizer["IntroDescription"]</p>
+                <a asp-route="signup" class="btn btn-primary intro-btn px-4">@Localizer["IntroButton"]</a>
             </div>
             <div class="col-md-6 overflow-hidden">
                 <img src="~/images/devices.jpg" />
@@ -35,37 +35,37 @@
 
 <div id="features-container">
     <div class="container py-5">
-        <h3 class="text-center mb-4">Get powerful reports in 3 simple steps</h3>
+        <h3 class="text-center mb-4">@Localizer["FeaturesTitle"]</h3>
         <div class="row">
             <div class="col-md-6">
-                <p class="feature-text feature-odd-text big-screen-only">@featuresText1</p>
+                <p class="feature-text feature-odd-text big-screen-only">@Localizer["FeaturesDescriptionOne"]</p>
             </div>
             <div class="col-md-6 overflow-hidden">
                 <img src="~/images/categories.jpg" class="feature-image feature-odd-image" />
             </div>
         </div>
         <div>
-            <p class="feature-text feature-odd-text small-screen-only">@featuresText1</p>
+            <p class="feature-text feature-odd-text small-screen-only">@Localizer["FeaturesDescriptionOne"]</p>
         </div>
         <div class="row">
             <div class="col-md-6 overflow-hidden">
                 <img src="~/images/entry.jpg" class="feature-image feature-even-image" />
             </div>
             <div class="col-md-6">
-                <p class="feature-text feature-even-text">@featuresText2</p>
+                <p class="feature-text feature-even-text">@Localizer["FeaturesDescriptionTwo"]</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p class="feature-text feature-odd-text big-screen-only">@featuresText3</p>
+                <p class="feature-text feature-odd-text big-screen-only">@Localizer["FeaturesDescriptionThree"]</p>
             </div>
             <div class="col-md-6 overflow-hidden">
                 <img src="~/images/reports.jpg" class="feature-image feature-odd-image" />
             </div>
         </div>
-        <p class="feature-text feature-odd-text small-screen-only">@featuresText3</p>
+        <p class="feature-text feature-odd-text small-screen-only">@Localizer["FeaturesDescriptionThree"]</p>
 
-        <a asp-route="signup" class="btn btn-primary features-btn px-4">Get Started!</a>
+        <a asp-route="signup" class="btn btn-primary features-btn px-4">@Localizer["GetStarted"]</a>
     </div>
 </div>
 

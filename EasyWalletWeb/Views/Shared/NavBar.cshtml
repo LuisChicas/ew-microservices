@@ -1,29 +1,33 @@
-﻿<div id="navbar" class="sw-navbar shadow-sm d-flex align-items-center">
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<div id="navbar" class="sw-navbar shadow-sm d-flex align-items-center">
     <a asp-controller="Wallet" asp-action="Index">
         <img src="~/images/logo.png" class="mr-3" width="35" height="30" />
     </a>
     <a asp-controller="Wallet" asp-action="Index">
         <h4 class="my-0 mr-4" style="color:white">Simple Wallet</h4>
     </a>
-    <a asp-controller="Wallet" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">Home</a>
-    <a asp-controller="Categories" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">Categories</a>
-    <a asp-controller="Reports" asp-action="Balance" class="p-2 mr-auto text-light not-mobile-only">Reports</a>
-    <a id="logout" asp-controller="Auth" asp-action="Logout" class="p-2 text-light not-mobile-only">Log out</a>
+    <a asp-controller="Wallet" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">@Localizer["Home"]</a>
+    <a asp-controller="Categories" asp-action="Index" class="p-2 mr-2 text-light not-mobile-only">@Localizer["Categories"]</a>
+    <a asp-controller="Reports" asp-action="Balance" class="p-2 mr-auto text-light not-mobile-only">@Localizer["Reports"]</a>
+    <a id="logout" asp-controller="Auth" asp-action="Logout" class="p-2 text-light not-mobile-only">@Localizer["Logout"]</a>
     <i id="menu-btn" class="fas fa-bars ml-auto mobile-only" onclick="openNav()"></i>
     <i id="menu-close-btn" class="fas fa-chevron-up mobile-only" onclick="closeNav()"></i>
 </div>
 
 <div id="navbar-mobile-extra" class="sw-navbar-mobile-extra mobile-only">
     <div>
-        <a id="logout-mobile" asp-controller="Auth" asp-action="Logout" class="mx-auto">Log Out</a>        
+        <a id="logout-mobile" asp-controller="Auth" asp-action="Logout" class="mx-auto">@Localizer["Logout"]</a>
     </div>
 </div>
 
 <div class="sw-navbar-mobile mobile-only">
     <a asp-controller="Categories" asp-action="Index" class="sw-navbar-mobile-btn">
-        Categories
+        @Localizer["Categories"]
     </a>
     <a asp-controller="Reports" asp-action="Balance" class="sw-navbar-mobile-btn">
-        Reports
+        @Localizer["Reports"]
     </a>
 </div>

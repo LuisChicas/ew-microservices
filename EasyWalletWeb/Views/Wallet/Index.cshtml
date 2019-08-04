@@ -1,4 +1,8 @@
-﻿@model EasyWalletWeb.ViewModels.WalletEntry
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@model EasyWalletWeb.ViewModels.WalletEntry
+
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Home";
@@ -32,27 +36,27 @@
     <div class="wallet-container">
         @using (Html.BeginForm("Entry", "Wallet", FormMethod.Post, new { @class = "spend-form text-center" }))
         {
-            <h1 class="h3 mb-4 font-weight-normal">Add an entry</h1>
+            <h1 class="h3 mb-4 font-weight-normal">@Localizer["AddEntry"]</h1>
 
             <div id="non-android-feedback" class="entry-format-feedback">
-                <span id="format-keyword">keyword</span>
-                <span id="format-amount"> + amount </span>
+                <span id="format-keyword">@Localizer["Keyword"]</span>
+                <span id="format-amount"> + @Localizer["Amount"] </span>
                 <span id="format-check">
                     <i class="fas fa-check format-valid"></i>
                 </span>
             </div>
 
             <div class="input-group">
-                <input type="text" id="Entry" name="Entry" class="form-control" value="@Model?.Entry" placeholder="Example: 'Super Market $20'" required>
-                <label for="inputSpend" class="sr-only">Spend</label>
+                <input type="text" id="Entry" name="Entry" class="form-control" value="@Model?.Entry" placeholder="@Localizer["EntryPlaceholder"]" required>
+                <label for="inputSpend" class="sr-only">@Localizer["Entry"]</label>
                 <div class="input-group-append">
-                    <button class="btn btn-primary btn-block" type="submit">Add</button>
+                    <button class="btn btn-primary btn-block" type="submit">@Localizer["Add"]</button>
                 </div>
             </div>
 
             <div id="android-feedback" class="entry-format-feedback">
-                <span id="format-keyword">keyword</span>
-                <span id="format-amount"> + amount </span>
+                <span id="format-keyword">@Localizer["Keyword"]</span>
+                <span id="format-amount"> + @Localizer["Amount"] </span>
                 <span id="format-check">
                     <i class="fas fa-check format-valid"></i>
                 </span>
@@ -66,7 +70,7 @@
             }
             else
             {
-                <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">Entry saved @entrySavedEmoji</div>
+            <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">@Localizer["EntrySaved"] @entrySavedEmoji</div>
             }
         }
 
