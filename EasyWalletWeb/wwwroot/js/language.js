@@ -6,12 +6,12 @@
 
     $("#lang-es").click(function (e) {
         e.preventDefault();
-        setLanguage($(this).attr("href"), "es");
+        setLanguage($(this).attr("href"), "es-US");
     });
 });
 
-function setLanguage(path, language) {
-    var url = path + "?language=" + language + "&returnUrl=" + window.location.pathname;
+function setLanguage(path, culture) {
+    var url = path + "?culture=" + culture + "&returnUrl=" + window.location.pathname;
 
     $("<form>")
         .attr("method", "post")

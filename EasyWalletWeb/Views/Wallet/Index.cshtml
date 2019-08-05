@@ -5,7 +5,7 @@
 @inject IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = Localizer["Home"];
 
     bool layoutEntrySavedAlert = Model != null && Model.PreviousEntrySaved;
 

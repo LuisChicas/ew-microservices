@@ -144,4 +144,7 @@
   <data name="Signup" xml:space="preserve">
     <value>Sign up</value>
   </data>
+  <data name="SignupTitle" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
 </root>

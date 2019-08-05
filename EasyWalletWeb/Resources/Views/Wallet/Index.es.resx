@@ -135,6 +135,9 @@
   <data name="EntrySaved" xml:space="preserve">
     <value>Registro guardado</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
   <data name="Keyword" xml:space="preserve">
     <value>palabra clave</value>
   </data>

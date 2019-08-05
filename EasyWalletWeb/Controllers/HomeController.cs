@@ -41,13 +41,13 @@ namespace EasyWalletWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult SetLanguage(string language, string returnUrl)
+        public IActionResult SetLanguage(string culture, string returnUrl)
         {
-            var culture = new RequestCulture(language);            
+            var requestCulture = new RequestCulture(culture);            
 
             Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,
-                CookieRequestCultureProvider.MakeCookieValue(culture),
+                CookieRequestCultureProvider.MakeCookieValue(requestCulture),
                 new CookieOptions { IsEssential = true }
             );
 

@@ -135,6 +135,9 @@
   <data name="EntrySaved" xml:space="preserve">
     <value>Entry saved</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Keyword" xml:space="preserve">
     <value>keyword</value>
   </data>

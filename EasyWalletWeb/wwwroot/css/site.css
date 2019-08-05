@@ -79,8 +79,18 @@
     font-size: 1rem !important;
 }
 
+.sw-footer {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.footer-info {
+    margin: 5px auto 0 auto;
+}
+
 .language-selection {
-    float: right;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .language-selection i {
@@ -103,6 +113,18 @@
         padding-right: 3rem !important;
         padding-top: 0.5rem !important;
         padding-bottom: 0.5rem !important;
+    }
+
+    [class~="sw-footer"] {
+        flex-direction: row;
+    }
+
+    [class~="footer-info"] {
+        margin: 0;
+    }
+
+    [class~="language-selection"] {
+        margin-right: 0;
     }
 
     .mobile-only {

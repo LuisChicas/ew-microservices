@@ -117,37 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FeaturesDescriptionOne" xml:space="preserve">
-    <value>Create categories and keywords of the things you spend the most.</value>
+  <data name="AddFirstOne" xml:space="preserve">
+    <value>Agrega el primero</value>
   </data>
-  <data name="FeaturesDescriptionThree" xml:space="preserve">
-    <value>Get and analyze many automatic reports with the data you need to know.</value>
+  <data name="AreYouSureDeleteEntry" xml:space="preserve">
+    <value>¿Estás seguro/a que quieres borrar este registro?</value>
   </data>
-  <data name="FeaturesDescriptionTwo" xml:space="preserve">
-    <value>Start tracking your spendings by just typing a keyword and an amount!</value>
+  <data name="Balance" xml:space="preserve">
+    <value>Balance</value>
   </data>
-  <data name="FeaturesTitle" xml:space="preserve">
-    <value>Get important reports in 3 simple steps</value>
+  <data name="History" xml:space="preserve">
+    <value>Historial</value>
   </data>
-  <data name="GetStarted" xml:space="preserve">
-    <value>Get Started!</value>
+  <data name="Monthly" xml:space="preserve">
+    <value>Mensual</value>
   </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="IntroButton" xml:space="preserve">
-    <value>Get Started - It's Free!</value>
-  </data>
-  <data name="IntroDescription" xml:space="preserve">
-    <value>Try the quickest and easiest way to track where your money goes.</value>
-  </data>
-  <data name="IntroTitle" xml:space="preserve">
-    <value>Improve your personal finances</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Log in</value>
-  </data>
-  <data name="Signup" xml:space="preserve">
-    <value>Sign up</value>
+  <data name="NoEntriesSaved" xml:space="preserve">
+    <value>No tienes ningún registro aún.</value>
   </data>
 </root>

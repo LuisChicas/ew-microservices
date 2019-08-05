@@ -132,6 +132,9 @@
   <data name="GetStarted" xml:space="preserve">
     <value>¡Inicia Ahora!</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
   <data name="IntroButton" xml:space="preserve">
     <value>Inicie Ahora - ¡Es Grátis!</value>
   </data>
