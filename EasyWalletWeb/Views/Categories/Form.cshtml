@@ -8,9 +8,14 @@
     ViewData["Title"] = Model.IsNew ? Localizer["NewCategoryTitle"] : Localizer["EditCategoryTitle"];
 }
 
-@section Styles
-    {
-    <link rel="stylesheet" href="~/css/categories.css" />
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/categories.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/categories.min.css" />
+    </environment>
 }
 
 <div class="content">
@@ -70,8 +75,14 @@
     <partial name="Footer" />
 </div>
 
-@section Scripts
-    {
-    <script src="~/js/categories.js"></script>
-    <script src="~/js/logout.js"></script>
+@section Scripts {
+    <environment include="Development">
+        <script src="~/js/categories.js"></script>
+        <script src="~/js/logout.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/js/categories.min.js"></script>
+        <script src="~/js/logout.min.js"></script>
+    </environment>
 }

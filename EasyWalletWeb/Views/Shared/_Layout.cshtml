@@ -12,8 +12,21 @@
 
     <title>@ViewData["Title"] - Simple Wallet</title>
 
+    <meta name="author" content="Luis Chicas">
+    <meta name="description" content="Improve your personal finances. Try the quickest and easiest way to track where your money goes.">
+
+    <meta property="og:title" content="Simple Wallet">
+    <meta property="og:url" content="http://wallet.luischicas.com" />
+    <meta property="og:image" content="http://wallet.luischicas.com/images/og-image.jpg">
+    <meta property="og:description" content="Improve your personal finances. Try the quickest and easiest way to track where your money goes.">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@("@luischicasg")" />
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/fontawesome/dist/css/fontawesome.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
@@ -21,10 +34,12 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/site.min.css" />
     </environment>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/site.css" />
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -34,6 +49,8 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/language.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -48,9 +65,9 @@
                 crossorigin="anonymous"
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/language.min.js" asp-append-version="true"></script>
     </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/language.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

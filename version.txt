@@ -1,6 +1,8 @@
 0.2.2
 
 - Internationalization!
+- Adds bundling and minification of resources.
+- Adds metadata of the site.
 - Fixes an issue about Entries reading in Reports.
 - Fixes an issue about CategoryType for new Categories.
 

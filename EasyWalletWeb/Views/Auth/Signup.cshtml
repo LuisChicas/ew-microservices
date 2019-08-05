@@ -8,9 +8,14 @@
     ViewData["Title"] = Localizer["SignupTitle"];
 }
 
-@section Styles
-    {
-    <link rel="stylesheet" href="~/css/auth.css" />
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/auth.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/auth.min.css" />
+    </environment>
 }
 
 <div class="content">
@@ -46,7 +51,12 @@
     <partial name="Footer" />
 </div>
 
-@section Scripts
-    {
-    <script src="~/js/signup.js"></script>
+@section Scripts {
+    <environment include="Development">
+        <script src="~/js/signup.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/js/signup.min.js"></script>
+    </environment>
 }

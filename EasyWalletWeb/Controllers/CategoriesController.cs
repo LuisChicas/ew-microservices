@@ -51,6 +51,7 @@ namespace EasyWalletWeb.Controllers
             if (duplicatedCategory != null)
             {
                 ModelState.AddModelError("Name", _localizer["NameAlreadyExists"]);
+                form.IsNew = true;
                 return View("Form", form);
             }
 

@@ -6,9 +6,14 @@
     ViewData["Title"] = Localizer["Home"];
 }
 
-@section Styles
-    {
-    <link rel="stylesheet" href="~/css/landing.css" />
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/landing.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/landing.min.css" />
+    </environment>
 }
 
 <div class="sw-navbar shadow-sm d-flex align-items-center p-2 px-5">

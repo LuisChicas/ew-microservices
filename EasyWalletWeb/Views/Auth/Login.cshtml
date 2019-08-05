@@ -8,9 +8,14 @@
     ViewData["Title"] = Localizer["Login"];
 }
 
-@section Styles
-    {
-    <link rel="stylesheet" href="~/css/auth.css" />
+@section Styles {
+    <environment include="Development">        
+        <link rel="stylesheet" href="~/css/auth.css" />
+    </environment>
+
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/auth.min.css" />
+    </environment>
 }
 
 <div class="content">

@@ -1,0 +1,162 @@
+[
+  // Site
+
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Landing
+
+  {
+    "outputFileName": "wwwroot/css/landing.min.css",
+    "inputFiles": [
+      "wwwroot/css/landing.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  // Login, Signup
+
+  {
+    "outputFileName": "wwwroot/css/auth.min.css",
+    "inputFiles": [
+      "wwwroot/css/auth.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/signup.min.js",
+    "inputFiles": [
+      "wwwroot/js/signup.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Logout
+
+  {
+    "outputFileName": "wwwroot/js/categories.min.js",
+    "inputFiles": [
+      "wwwroot/js/logout.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Categories Index, Form
+
+  {
+    "outputFileName": "wwwroot/css/categories.min.css",
+    "inputFiles": [
+      "wwwroot/css/categories.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/categories.min.js",
+    "inputFiles": [
+      "wwwroot/js/categories.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Reports
+
+  {
+    "outputFileName": "wwwroot/css/reports.min.css",
+    "inputFiles": [
+      "wwwroot/css/reports.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/report_balance.min.css",
+    "inputFiles": [
+      "wwwroot/css/report_balance.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/report_monthly.min.css",
+    "inputFiles": [
+      "wwwroot/css/report_monthly.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/report_history.min.css",
+    "inputFiles": [
+      "wwwroot/css/report_history.css"
+    ]
+  },
+
+  {
+    "outputFileName": "wwwroot/js/reports.min.js",
+    "inputFiles": [
+      "wwwroot/js/reports.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Wallet
+
+  {
+    "outputFileName": "wwwroot/css/wallet.min.css",
+    "inputFiles": [
+      "wwwroot/css/wallet.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/wallet.min.js",
+    "inputFiles": [
+      "wwwroot/js/wallet.js",
+      "wwwroot/js/entryFormatFeedback.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Language
+
+  {
+    "outputFileName": "wwwroot/js/language.min.js",
+    "inputFiles": [
+      "wwwroot/js/language.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
