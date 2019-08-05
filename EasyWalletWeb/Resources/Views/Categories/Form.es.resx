@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Agregar</value>
   </data>
+  <data name="AddAtLeastOneKeyword" xml:space="preserve">
+    <value>Tienes que agregar al menos una palabra clave a la categoría</value>
+  </data>
   <data name="AddCategory" xml:space="preserve">
     <value>Agregar categoría</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="EnterKeyword" xml:space="preserve">
     <value>Ingresa una palabra clave y da click en 'Agregar'</value>
+  </data>
+  <data name="KeywordAlreadyExists" xml:space="preserve">
+    <value>La palabra clave ya existe</value>
   </data>
   <data name="Keywords" xml:space="preserve">
     <value>Palabras clave</value>

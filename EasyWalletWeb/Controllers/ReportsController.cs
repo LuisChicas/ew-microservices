@@ -162,8 +162,7 @@ namespace EasyWalletWeb.Controllers
             User user = _context.Users.Where(u => u.Id == userId).Include(u => u.Categories).First();
             Tag[] tags = _context.Tags.ToArray();
             tags = _context.Tags.Where(t =>
-                user.Categories.FirstOrDefault(c => c.Id == t.CategoryId) != null
-                && t.DeletedAt == null)
+                user.Categories.FirstOrDefault(c => c.Id == t.CategoryId) != null)
                 .Include(t => t.Entries)
                 .ToArray();
 

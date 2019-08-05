@@ -48,10 +48,10 @@ footer {
 .no-entries-label {
     font-weight: 400;
     color: #999;
-    margin-top: 200px;
+    margin-top: 150px;
     text-align: center;
-    margin-left: -50px;
-    margin-right: -50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 h5 ~ a {
@@ -59,4 +59,17 @@ h5 ~ a {
     text-align: center;
     display: block;
     font-weight: 500;
+}
+
+@media only screen and (min-width: 426px) {
+    [class~="no-entries-label"] {
+        margin-top: 200px;
+    }
+}
+
+@media (min-width: 576px) {
+    [class~="no-entries-label"] {
+        margin-left: -70px;
+        margin-right: -70px;
+    }
 }

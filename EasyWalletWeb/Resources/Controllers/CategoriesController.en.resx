@@ -117,19 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddFirstOne" xml:space="preserve">
-    <value>Add the first one</value>
+  <data name="KeywordAlreadyExists1" xml:space="preserve">
+    <value>The keyword '</value>
   </data>
-  <data name="AddSomeEntries" xml:space="preserve">
-    <value>Add some entries to see more information here.</value>
+  <data name="KeywordAlreadyExists2" xml:space="preserve">
+    <value>' already exists in other category</value>
   </data>
-  <data name="Balance" xml:space="preserve">
-    <value>Balance</value>
-  </data>
-  <data name="History" xml:space="preserve">
-    <value>History</value>
-  </data>
-  <data name="Monthly" xml:space="preserve">
-    <value>Monthly</value>
+  <data name="NameAlreadyExists" xml:space="preserve">
+    <value>A category with this name already exists</value>
   </data>
 </root>

@@ -30,7 +30,8 @@
     var tagsInput = document.getElementById("tags-input");
     var existingTags = $(".new-category-tag").not(".tag-template").length;
     if (tagsInput != null && existingTags == 0) {
-        tagsInput.setCustomValidity("You have to add at least one tag to the category");
+        var message = $("#tags-input").data("empty-message");
+        tagsInput.setCustomValidity(message);
     }
 
     $("#add-tag-btn").click(function (e) {
@@ -57,7 +58,7 @@
 
         var duplicatedTag = getDuplicatedTag(name);
         if (duplicatedTag.length > 0) {
-            alert("Your tag already exists");
+            alert($("#tags-container").data("duplicated-message"));
 
             $("#tags-container")
                 .find("input")

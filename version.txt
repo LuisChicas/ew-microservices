@@ -1,6 +1,8 @@
 0.2.2
 
 - Internationalization!
+- Fixes an issue about Entries reading in Reports.
+- Fixes an issue about CategoryType for new Categories.
 
 0.2.1
 

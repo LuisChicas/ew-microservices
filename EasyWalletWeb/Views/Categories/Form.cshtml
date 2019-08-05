@@ -37,13 +37,13 @@
                 <input id="Name" name="Name" type="text" placeholder="@Localizer["Name"]" class="form-control mb-3" required autofocus value="@Model.Name" />
                 <h5>@Localizer["Keywords"]</h5>
                 <div class="input-group mb-3">
-                    <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="@Localizer["EnterKeyword"]">
+                    <input type="text" id="tags-input" name="tags-input" class="form-control" placeholder="@Localizer["EnterKeyword"]" data-empty-message="@Localizer["AddAtLeastOneKeyword"]">
                     <label for="tags-input" class="sr-only">@Localizer["Keywords"]</label>
                     <div class="input-group-append">
                         <button disabled id="add-tag-btn" class="btn btn-primary btn-block" type="submit">@Localizer["Add"]</button>
                     </div>
                 </div>
-                <ul id="tags-container" class="list-unstyled">
+                <ul id="tags-container" class="list-unstyled" data-duplicated-message="@Localizer["KeywordAlreadyExists"]">
                     <li class="tag-template badge-info new-category-tag">
                         <span>New Tag</span>
                         <a href="#"><i class="fas fa-times"></i></a>

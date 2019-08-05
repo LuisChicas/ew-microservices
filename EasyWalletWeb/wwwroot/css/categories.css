@@ -107,6 +107,12 @@ footer {
     display: none;
 }
 
+.alert ul {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
 @media only screen and (min-width: 426px) {
     [class~="category"] {
         padding: 20px 30px;
