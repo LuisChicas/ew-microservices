@@ -133,7 +133,7 @@
     <value>Editar Categoría</value>
   </data>
   <data name="EnterKeyword" xml:space="preserve">
-    <value>Ingresa una palabra clave y da click en 'Agregar'</value>
+    <value>Ingresa una palabra clave</value>
   </data>
   <data name="GotIt" xml:space="preserve">
     <value>Entendido</value>

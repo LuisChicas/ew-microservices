@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddCategory" xml:space="preserve">
-    <value>Add categories</value>
+    <value>Add category</value>
   </data>
   <data name="AreYouSureDeleteCategory1" xml:space="preserve">
     <value>Are you sure you want to delete '</value>
@@ -137,5 +137,8 @@
   </data>
   <data name="GotIt" xml:space="preserve">
     <value>Got it</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
   </data>
 </root>

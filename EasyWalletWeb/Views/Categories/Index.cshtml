@@ -48,7 +48,8 @@
                 <h2>@Localizer["Categories"]</h2>
                 <a class="btn category-add-btn" asp-controller="Categories" asp-action="New">
                     <i class="fas fa-plus"></i>
-                    @Localizer["AddCategory"]
+                    <span class="not-mobile-only">@Localizer["AddCategory"]</span>
+                    <span class="mobile-only">@Localizer["New"]</span>
                 </a>
             </div>
 

@@ -163,6 +163,12 @@
   // Instructions
 
   {
+    "outputFileName": "wwwroot/css/instructions.min.css",
+    "inputFiles": [
+      "wwwroot/css/instructions.css"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/js/instructions.min.js",
     "inputFiles": [
       "wwwroot/js/instructions.js"

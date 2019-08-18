@@ -127,7 +127,7 @@
     <value>Reporte de Balance</value>
   </data>
   <data name="CurrentBalance" xml:space="preserve">
-    <value>Balance Actual</value>
+    <value>Balance actual</value>
   </data>
   <data name="GotIt" xml:space="preserve">
     <value>Entendido</value>

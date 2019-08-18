@@ -68,7 +68,7 @@
                                     <li class="badge badge-info category-tag">@entry.Tag.Name</li>
                                 </ul>
                             </div>
-                            <h5 class="history-entry-amount my-auto ml-auto mr-5">@entry.Amount.ToString("C")</h5>
+                            <h5 class="history-entry-amount my-auto ml-auto">@entry.Amount.ToString("C")</h5>
                             <a asp-action="HistoryDelete" asp-route-id="@entry.Id" class="my-auto" data-delete-message="@Localizer["AreYouSureDeleteEntry"]">
                                 <i class="fas fa-trash"></i>
                             </a>

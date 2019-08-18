@@ -135,8 +135,11 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
-  <data name="IntroButton" xml:space="preserve">
-    <value>Get Started - It's Free!</value>
+  <data name="IntroButton1" xml:space="preserve">
+    <value>Get Started</value>
+  </data>
+  <data name="IntroButton2" xml:space="preserve">
+    <value>It's Free!</value>
   </data>
   <data name="IntroDescription" xml:space="preserve">
     <value>Try the quickest and easiest way to track where your money goes.</value>

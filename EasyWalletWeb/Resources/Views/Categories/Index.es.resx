@@ -138,4 +138,7 @@
   <data name="GotIt" xml:space="preserve">
     <value>Entendido</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>Nueva</value>
+  </data>
 </root>
