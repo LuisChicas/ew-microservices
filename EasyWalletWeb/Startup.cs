@@ -171,6 +171,11 @@ namespace EasyWalletWeb
                     name: "balance",
                     template: "u/reports/balance",
                     defaults: new { controller = "Reports", action = "Balance" });
+
+                routes.MapRoute(
+                    name: "flor",
+                    template: "flor",
+                    defaults: new { controller = "Wallet", action = "Flor" });
             });
         }
     }

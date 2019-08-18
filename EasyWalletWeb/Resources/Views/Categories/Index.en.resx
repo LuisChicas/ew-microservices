@@ -129,4 +129,13 @@
   <data name="Categories" xml:space="preserve">
     <value>Categories</value>
   </data>
+  <data name="CategoriesInstructions" xml:space="preserve">
+    <value>You have 'Incomes' category to save your money income. And any entry with a keyword that was not saved previously will be automatically saved in 'Others' category.</value>
+  </data>
+  <data name="CategoriesInstructionsTitle" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Got it</value>
+  </data>
 </root>

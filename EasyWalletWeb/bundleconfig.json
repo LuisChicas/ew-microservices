@@ -55,7 +55,7 @@
   // Logout
 
   {
-    "outputFileName": "wwwroot/js/categories.min.js",
+    "outputFileName": "wwwroot/js/logout.min.js",
     "inputFiles": [
       "wwwroot/js/logout.js"
     ],
@@ -152,6 +152,20 @@
     "outputFileName": "wwwroot/js/language.min.js",
     "inputFiles": [
       "wwwroot/js/language.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+
+  // Instructions
+
+  {
+    "outputFileName": "wwwroot/js/instructions.min.js",
+    "inputFiles": [
+      "wwwroot/js/instructions.js"
     ],
     "minify": {
       "enabled": true,

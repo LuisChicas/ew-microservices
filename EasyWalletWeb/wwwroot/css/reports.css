@@ -61,6 +61,10 @@ h5 ~ a {
     font-weight: 500;
 }
 
+.instructions-container {
+    margin: 30px -5px -30px -5px;
+}
+
 @media only screen and (min-width: 426px) {
     [class~="no-entries-label"] {
         margin-top: 200px;
@@ -71,5 +75,31 @@ h5 ~ a {
     [class~="no-entries-label"] {
         margin-left: -70px;
         margin-right: -70px;
+    }
+
+    [class~="instructions-container"] {
+        width: 86%;
+        margin: 30px 7% -30px 7%;
+    }
+}
+
+@media (min-width: 768px) {
+    [class~="instructions-container"] {
+        width: 70%;
+        margin: 30px 15% -30px 15%;
+    }
+}
+
+@media (min-width: 992px) {
+    [class~="instructions-container"] {
+        width: 50%;
+        margin: 30px 25% -30px 25%;
+    }
+}
+
+@media (min-width: 1200px) {
+    [class~="instructions-container"] {
+        width: 40%;
+        margin: 30px 30% -30px 30%;
     }
 }

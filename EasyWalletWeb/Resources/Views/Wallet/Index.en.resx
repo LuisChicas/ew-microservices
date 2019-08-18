@@ -123,6 +123,9 @@
   <data name="AddEntry" xml:space="preserve">
     <value>Add an entry</value>
   </data>
+  <data name="AddFirstCategory" xml:space="preserve">
+    <value>Add your first category.</value>
+  </data>
   <data name="Amount" xml:space="preserve">
     <value>amount</value>
   </data>
@@ -135,10 +138,19 @@
   <data name="EntrySaved" xml:space="preserve">
     <value>Entry saved</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Got it</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="Keyword" xml:space="preserve">
     <value>keyword</value>
+  </data>
+  <data name="WelcomeInstructions" xml:space="preserve">
+    <value>You entries are organized by keywords and categories.</value>
+  </data>
+  <data name="WelcomeInstructionsTitle" xml:space="preserve">
+    <value>Welcome!</value>
   </data>
 </root>

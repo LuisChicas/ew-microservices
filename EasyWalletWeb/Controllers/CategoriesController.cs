@@ -39,7 +39,7 @@ namespace EasyWalletWeb.Controllers
             return View(new CategoriesIndex { Categories = categories });
         }
 
-        public IActionResult New() => View("Form", new CategoriesForm { IsNew = true });
+        public IActionResult New() => View("Form", new CategoriesForm { IsNew = true });        
 
         [HttpPost]
         public IActionResult New(CategoriesForm form)

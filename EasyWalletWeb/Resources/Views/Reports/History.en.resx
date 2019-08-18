@@ -126,8 +126,17 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Got it</value>
+  </data>
   <data name="History" xml:space="preserve">
     <value>History</value>
+  </data>
+  <data name="HistoryInstructions" xml:space="preserve">
+    <value>This report shows you every of your entries ordered by date.</value>
+  </data>
+  <data name="HistoryInstructionsTitle" xml:space="preserve">
+    <value>History Report</value>
   </data>
   <data name="Monthly" xml:space="preserve">
     <value>Monthly</value>

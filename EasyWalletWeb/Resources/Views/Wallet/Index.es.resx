@@ -123,6 +123,9 @@
   <data name="AddEntry" xml:space="preserve">
     <value>Agregue un registro</value>
   </data>
+  <data name="AddFirstCategory" xml:space="preserve">
+    <value>Agrega tu primer categoría.</value>
+  </data>
   <data name="Amount" xml:space="preserve">
     <value>cantidad</value>
   </data>
@@ -135,10 +138,19 @@
   <data name="EntrySaved" xml:space="preserve">
     <value>Registro guardado</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Inicio</value>
   </data>
   <data name="Keyword" xml:space="preserve">
     <value>palabra clave</value>
+  </data>
+  <data name="WelcomeInstructions" xml:space="preserve">
+    <value>Tus registros se organizan por palabras clave y categorías.</value>
+  </data>
+  <data name="WelcomeInstructionsTitle" xml:space="preserve">
+    <value>¡Bienvenido!</value>
   </data>
 </root>

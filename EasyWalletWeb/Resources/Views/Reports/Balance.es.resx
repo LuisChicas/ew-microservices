@@ -120,8 +120,17 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="BalanceInstructions" xml:space="preserve">
+    <value>Te muestra el resultado de tus ingresos menos tus gastos. Además de mostrar tu dinero disponible actualmente, muestra con cuanto dinero disponible terminaste los meses anteriores.</value>
+  </data>
+  <data name="BalanceInstructionsTitle" xml:space="preserve">
+    <value>Reporte de Balance</value>
+  </data>
   <data name="CurrentBalance" xml:space="preserve">
     <value>Balance Actual</value>
+  </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>Historial</value>

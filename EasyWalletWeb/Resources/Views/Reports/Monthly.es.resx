@@ -126,10 +126,19 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
+  </data>
   <data name="History" xml:space="preserve">
     <value>Historial</value>
   </data>
   <data name="Monthly" xml:space="preserve">
     <value>Mensual</value>
+  </data>
+  <data name="MonthlyInstructions" xml:space="preserve">
+    <value>Este reporte te muestra el total de tus gastos e ingresos por mes, separados por tus propias categorías.</value>
+  </data>
+  <data name="MonthlyInstructionsTitle" xml:space="preserve">
+    <value>Reporte Mensual</value>
   </data>
 </root>

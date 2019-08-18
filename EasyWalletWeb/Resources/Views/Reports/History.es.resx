@@ -126,8 +126,17 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
+  </data>
   <data name="History" xml:space="preserve">
     <value>Historial</value>
+  </data>
+  <data name="HistoryInstructions" xml:space="preserve">
+    <value>Este reporte te muestra cada uno de tus registros ordenados por fecha.</value>
+  </data>
+  <data name="HistoryInstructionsTitle" xml:space="preserve">
+    <value>Reporte de Historial</value>
   </data>
   <data name="Monthly" xml:space="preserve">
     <value>Mensual</value>

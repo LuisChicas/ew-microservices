@@ -87,6 +87,7 @@ namespace EasyWalletWeb.Controllers
             await Authenticate(user);
 
             SaveDefaultData(user.Id);
+            SetInstructionsCookies();
 
             return RedirectToRoute("wallet");
         }
@@ -142,6 +143,27 @@ namespace EasyWalletWeb.Controllers
             _context.Tags.Add(othersTag);
             _context.Tags.Add(incomeTag);
             _context.SaveChanges();
+        }
+
+        private void SetInstructionsCookies()
+        {
+            var instructions = new string[] {
+                Constants.InstructionNameWelcome,
+                Constants.InstructionNameNewCategory,
+                Constants.InstructionNameCategories,
+                Constants.InstructionNameBalance,
+                Constants.InstructionNameMonthly,
+                Constants.InstructionNameHistory
+            };
+
+            for (int i = 0; i < instructions.Length; i++)
+            {
+                Response.Cookies.Append(
+                    Constants.InstructionsNamePrefix + instructions[i],
+                    string.Empty,
+                    new Microsoft.AspNetCore.Http.CookieOptions { IsEssential = true }
+                );
+            }
         }
 
         [HttpPost]

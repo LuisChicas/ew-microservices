@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EasyWalletWeb.Infrastructure
 
 @model EasyWalletWeb.ViewModels.ReportsBalance
 
@@ -6,30 +7,47 @@
 
 @{
     ViewData["Title"] = Localizer["Balance"];
+
+    var balanceInstructionFullName = Constants.InstructionsNamePrefix + Constants.InstructionNameBalance;
 }
 
 @section Styles {
     <environment include="Development">
         <link rel="stylesheet" href="~/css/reports.css" />
         <link rel="stylesheet" href="~/css/report_balance.css" />
+        <link rel="stylesheet" href="~/css/instructions.css" />
     </environment>
 
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/reports.min.css" />
         <link rel="stylesheet" href="~/css/report_balance.min.css" />
+        <link rel="stylesheet" href="~/css/instructions.min.css" />
     </environment>
 }
 
 <div class="content">
     <partial name="NavBar" />
 
-    <div class="reports-navbar shadow-sm">
+    <div class="reports-navbar">
         <div class="reports-navbar-subcontainer mx-auto">
             <a asp-action="Balance" class="p-2 reports-navbar-selected">@Localizer["Balance"]</a>
             <a asp-action="Monthly" class="p-2">@Localizer["Monthly"]</a>
             <a asp-action="History" class="p-2">@Localizer["History"]</a>
         </div>
     </div>
+
+    @if (Context.Request.Cookies.Any(c => c.Key == balanceInstructionFullName))
+    {
+        <div class="alert alert-warning instructions-container" data-instruction="@Constants.InstructionNameBalance">
+            <span class="instructions-title">@Localizer["BalanceInstructionsTitle"]</span>
+            <br />
+            <br />
+            @Localizer["BalanceInstructions"]
+            <br />
+            <br />
+            <a id="alert-dismiss" href="#">@Localizer["GotIt"]</a>
+        </div>
+    }
 
     <div class="reports-main-container py-4">
         <div class="balance-container">
@@ -54,10 +72,12 @@
 
 @section Scripts {
     <environment include="Development">
+        <script src="~/js/instructions.js"></script>
         <script src="~/js/logout.js"></script>
     </environment>
 
     <environment exclude="Development">
+        <script src="~/js/instructions.min.js"></script>
         <script src="~/js/logout.min.js"></script>
     </environment>
 }

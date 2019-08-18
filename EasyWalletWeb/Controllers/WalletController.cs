@@ -8,6 +8,7 @@ using EasyWalletWeb.Models;
 using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 
@@ -33,6 +34,29 @@ namespace EasyWalletWeb.Controllers
             }
 
             return View();
+        }
+
+        public IActionResult Flor()
+        {
+            var instructions = new string[] {
+                Constants.InstructionNameWelcome,
+                Constants.InstructionNameNewCategory,
+                Constants.InstructionNameCategories,
+                Constants.InstructionNameBalance,
+                Constants.InstructionNameMonthly,
+                Constants.InstructionNameHistory
+            };
+
+            for (int i = 0; i < instructions.Length; i++)
+            {
+                Response.Cookies.Append(
+                    Constants.InstructionsNamePrefix + instructions[i],
+                    string.Empty,
+                    new Microsoft.AspNetCore.Http.CookieOptions { IsEssential = true }
+                );
+            }
+
+            return RedirectToRoute("wallet");
         }
 
         [HttpPost]

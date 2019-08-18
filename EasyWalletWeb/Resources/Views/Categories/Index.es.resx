@@ -129,4 +129,13 @@
   <data name="Categories" xml:space="preserve">
     <value>Categorías</value>
   </data>
+  <data name="CategoriesInstructions" xml:space="preserve">
+    <value>Tienes la categoría ‘Ingresos’ para guardar tus entradas de dinero. Y en la categoría ‘Otros’ se agregará automáticamente cualquier registro con una palabra clave que no se haya guardado previamente.</value>
+  </data>
+  <data name="CategoriesInstructionsTitle" xml:space="preserve">
+    <value>Categorías</value>
+  </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
+  </data>
 </root>

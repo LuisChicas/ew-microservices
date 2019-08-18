@@ -135,6 +135,9 @@
   <data name="EnterKeyword" xml:space="preserve">
     <value>Enter a keyword and click 'Add'</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Got it</value>
+  </data>
   <data name="KeywordAlreadyExists" xml:space="preserve">
     <value>The keyword already exists</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="NewCategory" xml:space="preserve">
     <value>New category</value>
+  </data>
+  <data name="NewCategoryInstructions" xml:space="preserve">
+    <value>Your keywords are grouped by categories, so you can analyze your entries in a better way. Add keywords for you to add your entries easly, for instance: 'super market', 'gas', 'movie theater' or 'supplies'.</value>
+  </data>
+  <data name="NewCategoryInstructionsTitle" xml:space="preserve">
+    <value>New Category</value>
   </data>
   <data name="NewCategoryTitle" xml:space="preserve">
     <value>New Category</value>

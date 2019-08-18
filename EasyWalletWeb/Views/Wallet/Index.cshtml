@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using EasyWalletWeb.Infrastructure;
 
 @model EasyWalletWeb.ViewModels.WalletEntry
 
@@ -8,6 +9,8 @@
     ViewData["Title"] = Localizer["Home"];
 
     bool layoutEntrySavedAlert = Model != null && Model.PreviousEntrySaved;
+
+    string welcomeInstructionFullName = Constants.InstructionsNamePrefix + Constants.InstructionNameWelcome;
 
     string entrySavedEmoji = "";
 
@@ -28,10 +31,12 @@
 @section Styles {
     <environment include="Development">
         <link rel="stylesheet" href="~/css/wallet.css" />
+        <link rel="stylesheet" href="~/css/instructions.css" />
     </environment>
 
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/wallet.min.css" />
+        <link rel="stylesheet" href="~/css/instructions.min.css" />
     </environment>
 }
 
@@ -73,6 +78,18 @@
             {
                 @Html.ValidationSummary("", new { @class = "alert alert-danger" })
             }
+            else if (Context.Request.Cookies.Any(c => c.Key == welcomeInstructionFullName))
+            {
+                <div class="alert alert-warning" data-instruction="@Constants.InstructionNameWelcome">
+                    <span class="instructions-title">@Localizer["WelcomeInstructionsTitle"]</span>
+                    <br />
+                    <br />
+                    @Localizer["WelcomeInstructions"] <a href="#" data-redirect="@Url.RouteUrl("new-category")">@Localizer["AddFirstCategory"]</a>
+                    <br />
+                    <br />
+                    <a id="alert-dismiss" href="#">@Localizer["GotIt"]</a>
+                </div>
+            }
             else
             {
                 <div id="entry-saved-alert" class="alert alert-success py-1 @(layoutEntrySavedAlert ? "" : "invisible")">@Localizer["EntrySaved"] @entrySavedEmoji</div>
@@ -87,11 +104,14 @@
 @section Scripts {
     <environment include="Development">
         <script src="~/js/wallet.js"></script>
+        <script src="~/js/entryFormatFeedback.js"></script>    
+        <script src="~/js/instructions.js"></script>
         <script src="~/js/logout.js"></script>
     </environment>
 
     <environment exclude="Development">
         <script src="~/js/wallet.min.js"></script>
+        <script src="~/js/instructions.min.js"></script>
         <script src="~/js/logout.min.js"></script>
     </environment>
 }

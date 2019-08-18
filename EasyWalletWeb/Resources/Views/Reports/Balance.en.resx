@@ -120,8 +120,17 @@
   <data name="Balance" xml:space="preserve">
     <value>Balance</value>
   </data>
+  <data name="BalanceInstructions" xml:space="preserve">
+    <value>It shows you the substraction of your income minus your expenses. Besides showing your currently available money, it shows how much money you ended up with after every month.</value>
+  </data>
+  <data name="BalanceInstructionsTitle" xml:space="preserve">
+    <value>Balance Reporte</value>
+  </data>
   <data name="CurrentBalance" xml:space="preserve">
     <value>Current Balance</value>
+  </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Got it</value>
   </data>
   <data name="History" xml:space="preserve">
     <value>History</value>

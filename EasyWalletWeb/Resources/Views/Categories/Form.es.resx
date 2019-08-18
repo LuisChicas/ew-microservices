@@ -135,6 +135,9 @@
   <data name="EnterKeyword" xml:space="preserve">
     <value>Ingresa una palabra clave y da click en 'Agregar'</value>
   </data>
+  <data name="GotIt" xml:space="preserve">
+    <value>Entendido</value>
+  </data>
   <data name="KeywordAlreadyExists" xml:space="preserve">
     <value>La palabra clave ya existe</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="NewCategory" xml:space="preserve">
     <value>Nueva categoría</value>
+  </data>
+  <data name="NewCategoryInstructions" xml:space="preserve">
+    <value>Tus palabras clave están agrupadas por categorías para que puedas analizar tus registros de mejor forma. Agrega palabras clave para ingresar tus gastos fácilmente, por ejemplo: ‘super mercado’, ‘gasolina’, ‘cine’ o ‘suministros’.</value>
+  </data>
+  <data name="NewCategoryInstructionsTitle" xml:space="preserve">
+    <value>Nueva Categoría</value>
   </data>
   <data name="NewCategoryTitle" xml:space="preserve">
     <value>Nueva Categoría</value>
