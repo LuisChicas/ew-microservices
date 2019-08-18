@@ -40,6 +40,22 @@ footer {
     color: #eee;
 }
 
+h4 a:link {
+    color: unset;
+}
+
+h4 a:visited {
+    color: unset;
+}
+
+h4 a:hover {
+    color: unset;
+}
+
+h4 a:active { 
+    color: unset; 
+}
+
 .category-add-btn {
     padding: 0.15em 0.5em;
     color: white;

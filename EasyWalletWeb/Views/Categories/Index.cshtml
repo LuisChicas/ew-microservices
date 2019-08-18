@@ -56,11 +56,15 @@
             {
                 <div class="category">
                     <div class="mb-3">
-                        <h4 class="d-inline">@category.Name</h4>
+                        <h4 class="d-inline">
+                            <a asp-action="Edit" asp-route-id="@category.Id">
+                                @category.Name
+                            </a>
+                        </h4>
 
                         @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID
-                        && category.Name != Constants.OthersCategoryNameEN
-                        && category.Name != Constants.OthersCategoryNameES)
+                            && category.Name != Constants.OthersCategoryNameEN
+                            && category.Name != Constants.OthersCategoryNameES)
                         {
                             <a asp-action="Delete" asp-route-id="@category.Id" class="float-right" data-delete-message="@string.Format(deleteMessage, category.Name)">
                                 <i class="fas fa-trash"></i>

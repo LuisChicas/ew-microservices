@@ -59,7 +59,7 @@ namespace EasyWalletWeb
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
-                var english = new CultureInfo("en");
+                var english = new CultureInfo("en-US");
                 var spanish = new CultureInfo("es-US");
                 english.NumberFormat.CurrencyNegativePattern = 1;
                 spanish.NumberFormat.CurrencyNegativePattern = 1;
