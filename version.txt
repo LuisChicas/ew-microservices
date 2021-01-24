@@ -1,6 +1,7 @@
 0.2.3
 
 - Instructions messages for new users.
+- Site style improved for narrow or small screens.
 
 0.2.2
 

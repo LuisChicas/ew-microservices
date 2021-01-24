@@ -5,6 +5,10 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using EasyWallet.Business.Abstractions;
+using EasyWallet.Business.Services;
+using EasyWallet.Data;
+using EasyWallet.Data.Abstractions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +48,8 @@ namespace EasyWalletWeb
             });
 
             services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration.GetConnectionString("WalletDB")));
+            services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(Configuration.GetConnectionString("WalletDB")));
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => {
                 o.ExpireTimeSpan = new TimeSpan(2, 0, 0, 0);
@@ -56,6 +62,9 @@ namespace EasyWalletWeb
                 .AddViewLocalization(opts => opts.ResourcesPath = "Resources")
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserService, UserService>();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
