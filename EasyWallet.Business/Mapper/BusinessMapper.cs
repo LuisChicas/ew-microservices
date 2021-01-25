@@ -3,7 +3,7 @@ using System;
 
 namespace EasyWallet.Business.Mapper
 {
-    public static class BusinessMapper
+    internal static class BusinessMapper
     {
         public static IMapper Mapper => Lazy.Value;
 

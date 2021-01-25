@@ -65,6 +65,7 @@ namespace EasyWalletWeb
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {

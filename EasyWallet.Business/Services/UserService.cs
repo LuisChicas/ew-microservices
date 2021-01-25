@@ -21,7 +21,7 @@ namespace EasyWallet.Business.Services
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            var userData = await _unitOfWork.Users.GetByEmailAsync(email);
+            var userData = await _unitOfWork.Users.GetUserByEmailAsync(email);
             var user = BusinessMapper.Mapper.Map<User>(userData);
             return user;
         }

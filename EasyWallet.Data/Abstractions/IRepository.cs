@@ -7,5 +7,6 @@ namespace EasyWallet.Data.Abstractions
     {
         Task<TEntity> GetByIdAsync(int id);
         Task<int> AddAsync(TEntity entity);
+        Task AddRangeAsync(IEnumerable<TEntity> entities);
     }
 }

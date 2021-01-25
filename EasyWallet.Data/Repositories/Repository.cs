@@ -22,6 +22,11 @@ namespace EasyWallet.Data.Repositories
             return savedEntity.Entity.Id;
         }
 
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await Context.Set<TEntity>().AddRangeAsync(entities);
+        }
+
         public Task<TEntity> GetByIdAsync(int id)
         {
             return Context.Set<TEntity>().FindAsync(id);

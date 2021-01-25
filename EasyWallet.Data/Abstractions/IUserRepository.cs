@@ -5,7 +5,7 @@ namespace EasyWallet.Data.Abstractions
 {
     public interface IUserRepository : IRepository<UserData>
     {
-        Task<UserData> GetByEmailAsync(string email);
+        Task<UserData> GetUserByEmailAsync(string email);
 
         Task<bool> EmailExistsAsync(string email);
     }

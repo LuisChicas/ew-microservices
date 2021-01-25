@@ -16,7 +16,7 @@ namespace EasyWallet.Data.Repositories
         {
         }
 
-        public Task<UserData> GetByEmailAsync(string email) 
+        public Task<UserData> GetUserByEmailAsync(string email) 
         {
             return EasyWalletContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         }

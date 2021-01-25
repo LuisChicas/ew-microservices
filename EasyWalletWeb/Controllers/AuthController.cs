@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using EasyWallet.Business.Abstractions;
+﻿using EasyWallet.Business.Abstractions;
 using EasyWallet.Business.Models;
 using EasyWalletWeb.Infrastructure;
 using EasyWalletWeb.ViewModels;
@@ -11,18 +6,19 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace EasyWalletWeb.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly DatabaseContext _context;
         private readonly IUserService _userService;
         private readonly IStringLocalizer<AuthController> _localizer;
 
-        public AuthController(DatabaseContext context, IUserService userService, IStringLocalizer<AuthController> localizer)
+        public AuthController(IUserService userService, IStringLocalizer<AuthController> localizer)
         {
-            _context = context;
             _userService = userService;
             _localizer = localizer;
         }
