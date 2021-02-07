@@ -15,13 +15,11 @@ namespace EasyWalletWeb.Controllers
 {    
     public class CategoriesController : Controller
     {
-        private readonly DatabaseContext _context;
         private readonly ICategoryService _categoryService;
         private readonly IStringLocalizer<CategoriesController> _localizer;
 
-        public CategoriesController(DatabaseContext context, ICategoryService categoryService, IStringLocalizer<CategoriesController> localizer)
+        public CategoriesController(ICategoryService categoryService, IStringLocalizer<CategoriesController> localizer)
         {
-            _context = context;
             _categoryService = categoryService;
             _localizer = localizer;
         }

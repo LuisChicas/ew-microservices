@@ -12,11 +12,13 @@ namespace EasyWallet.Data
         public IUserRepository Users => _userRepository = _userRepository ?? new UserRepository(_context);
         public ICategoryRepository Categories => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
         public ITagRepository Tags => _tagRepository = _tagRepository ?? new TagRepository(_context);
+        public IEntryRepository Entries => _entryRepository = _entryRepository ?? new EntryRepository(_context);
 
         private readonly EasyWalletContext _context;
         private UserRepository _userRepository;
         private CategoryRepository _categoryRepository;
         private TagRepository _tagRepository;
+        private EntryRepository _entryRepository;
 
         public UnitOfWork(EasyWalletContext context)
         {

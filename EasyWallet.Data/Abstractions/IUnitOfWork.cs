@@ -8,6 +8,7 @@ namespace EasyWallet.Data.Abstractions
         IUserRepository Users { get; }
         ICategoryRepository Categories { get; }
         ITagRepository Tags { get; }
+        IEntryRepository Entries { get; }
 
         Task<int> CommitAsync();
     }

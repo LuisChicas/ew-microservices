@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using EasyWallet.Data.Entities;
 
 namespace EasyWallet.Data.Abstractions
 {
-    interface IEntryRepository
+    public interface IEntryRepository : IRepository<EntryData>
     {
     }
 }

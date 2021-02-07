@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
-using EasyWallet.Business.Abstractions;
+﻿using EasyWallet.Business.Abstractions;
 using EasyWallet.Business.Services;
 using EasyWallet.Data;
 using EasyWallet.Data.Abstractions;
@@ -13,14 +6,19 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 namespace EasyWalletWeb
 {
@@ -47,8 +45,8 @@ namespace EasyWalletWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration.GetConnectionString("WalletDB")));
-            services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(Configuration.GetConnectionString("WalletDB")));
+            services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(GetConnectionString()));
+            services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(GetConnectionString()));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => {
@@ -66,6 +64,7 @@ namespace EasyWalletWeb
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IEntryService, EntryService>();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
@@ -89,6 +88,11 @@ namespace EasyWalletWeb
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             var options = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(options.Value);
 
@@ -107,86 +111,34 @@ namespace EasyWalletWeb
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "home",
-                    template: "",
-                    defaults: new { controller = "Home", action = "Index" });
+                routes.MapRoute("home", "", new { controller = "Home", action = "Index" });
+                routes.MapRoute("language", "lang", new { controller = "Home", action = "SetLanguage" });
+                routes.MapRoute("login", "login", new { controller = "Auth", action = "Login" });
+                routes.MapRoute("signup", "signup", new { controller = "Auth", action = "Signup" });
+                routes.MapRoute("logout", "logout", new { controller = "Auth", action = "Logout" });
 
-                routes.MapRoute(
-                    name: "language",
-                    template: "lang",
-                    defaults: new { controller = "Home", action = "SetLanguage" });
+                routes.MapRoute("wallet", "u", new { controller = "Wallet", action = "Index" });
+                routes.MapRoute("new-entry", "u/entries/new", new { controller = "Wallet", action = "Entry" });
 
-                routes.MapRoute(
-                    name: "login",
-                    template: "login",
-                    defaults: new { controller = "Auth", action = "Login" });
+                routes.MapRoute("categories", "u/categories", new { controller = "Categories", action = "Index" });
+                routes.MapRoute("new-category", "u/categories/new", new { controller = "Categories", action = "New" });
+                routes.MapRoute("edit-category", "u/categories/edit/{id}", new { controller = "Categories", action = "Edit" });
+                routes.MapRoute("delete-category", "u/categories/delete/{id}", new { controller = "Categories", action = "Delete" });
 
-                routes.MapRoute(
-                    name: "signup",
-                    template: "signup",
-                    defaults: new { controller = "Auth", action = "Signup" });
-
-                routes.MapRoute(
-                    name: "wallet",
-                    template: "u",
-                    defaults: new { controller = "Wallet", action = "Index" });
-
-                routes.MapRoute(
-                    name: "new-entry",
-                    template: "u/entries/new",
-                    defaults: new { controller = "Wallet", action = "Entry" });
-
-                routes.MapRoute(
-                    name: "logout",
-                    template: "logout",
-                    defaults: new { controller = "Auth", action = "Logout" });
-
-                routes.MapRoute(
-                    name: "categories",
-                    template: "u/categories",
-                    defaults: new { controller = "Categories", action = "Index" });
-
-                routes.MapRoute(
-                    name: "new-category",
-                    template: "u/categories/new",
-                    defaults: new { controller = "Categories", action = "New" });
-
-                routes.MapRoute(
-                    name: "edit-category",
-                    template: "u/categories/edit/{id}",
-                    defaults: new { controller = "Categories", action = "Edit" });
-
-                routes.MapRoute(
-                    name: "delete-category",
-                    template: "u/categories/delete/{id}",
-                    defaults: new { controller = "Categories", action = "Delete" });
-
-                routes.MapRoute(
-                    name: "history",
-                    template: "u/reports/history",
-                    defaults: new { controller = "Reports", action = "History" });
-
-                routes.MapRoute(
-                    name: "history-delete",
-                    template: "u/reports/history/delete/{id}",
-                    defaults: new { controller = "Reports", action = "HistoryDelete" });
-
-                routes.MapRoute(
-                    name: "monthly",
-                    template: "u/reports/monthly",
-                    defaults: new { controller = "Reports", action = "Monthly" });
-
-                routes.MapRoute(
-                    name: "balance",
-                    template: "u/reports/balance",
-                    defaults: new { controller = "Reports", action = "Balance" });
-
-                routes.MapRoute(
-                    name: "flor",
-                    template: "flor",
-                    defaults: new { controller = "Wallet", action = "Flor" });
+                routes.MapRoute("history", "u/reports/history", new { controller = "Reports", action = "History" });
+                routes.MapRoute("history-delete", "u/reports/history/delete/{id}", new { controller = "Reports", action = "HistoryDelete" });
+                routes.MapRoute("monthly", "u/reports/monthly", new { controller = "Reports", action = "Monthly" });
+                routes.MapRoute("balance", "u/reports/balance", new { controller = "Reports", action = "Balance" });
             });
+        }
+
+        private string GetConnectionString()
+        {
+            string host = Configuration["RDS_HOSTNAME"];
+            string dbName = Configuration["RDS_DB_NAME"];
+            string username = Configuration["RDS_USERNAME"];
+            string password = Configuration["RDS_PASSWORD"];
+            return $"Data Source={host};Initial Catalog={dbName};User ID={username};Password={password};";
         }
     }
 }
