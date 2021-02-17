@@ -2,7 +2,7 @@
 
 namespace EasyWallet.Business.Exceptions
 {
-    public class InvalidEntryAmountException : ArgumentException
+    public class InvalidEntryAmountException : FormatException
     {
         public InvalidEntryAmountException()
         {

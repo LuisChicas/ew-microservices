@@ -11,6 +11,7 @@ namespace EasyWallet.Business.Mapper
             CreateMap<UserData, User>().ReverseMap();
             CreateMap<CategoryData, Category>().ReverseMap();
             CreateMap<TagData, Tag>().ReverseMap();
+            CreateMap<EntryData, Entry>().ReverseMap();
         }
     }
 }

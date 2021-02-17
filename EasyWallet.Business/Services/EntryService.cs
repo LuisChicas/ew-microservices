@@ -65,6 +65,17 @@ namespace EasyWallet.Business.Services
             await _unitOfWork.CommitAsync();
         }
 
+        public async Task DeleteEntry(int id)
+        {
+            var entryData = await _unitOfWork.Entries.GetActiveEntryById(id);
+
+            if (entryData != null)
+            {
+                entryData.DeletedAt = DateTime.UtcNow;
+                await _unitOfWork.CommitAsync();
+            }
+        }
+
         private (string keyword, decimal amount) ParseEntry(string entry)
         {
             if (string.IsNullOrEmpty(entry))

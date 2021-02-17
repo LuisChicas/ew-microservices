@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EasyWallet.Business.Abstractions;
+using EasyWalletWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using EasyWallet.Business.Abstractions;
-using EasyWalletWeb.Infrastructure;
-using EasyWalletWeb.Models;
-using EasyWalletWeb.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Localization;
 
 namespace EasyWalletWeb.Controllers
-{    
+{
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
@@ -32,10 +29,10 @@ namespace EasyWalletWeb.Controllers
             return View(new CategoriesIndex { Categories = categories });
         }
 
-        public IActionResult New() => View("Form", new CategoriesForm { IsNew = true });        
+        public IActionResult New() => View("Form", new CategoryForm { IsNew = true });        
 
         [HttpPost]
-        public async Task<IActionResult> New(CategoriesForm form)
+        public async Task<IActionResult> New(CategoryForm form)
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var categories = await _categoryService.GetActiveCategoriesByUser(userId);
@@ -79,7 +76,7 @@ namespace EasyWalletWeb.Controllers
                 return NotFound();
             }
 
-            return View("Form", new CategoriesForm
+            return View("Form", new CategoryForm
             {
                 Id = category.Id,
                 Name = category.Name,
@@ -89,7 +86,7 @@ namespace EasyWalletWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(CategoriesForm form)
+        public async Task<IActionResult> Edit(CategoryForm form)
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 

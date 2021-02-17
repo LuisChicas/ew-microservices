@@ -1,6 +1,7 @@
 ﻿using EasyWallet.Business.Abstractions;
 using EasyWallet.Business.Exceptions;
 using EasyWalletWeb.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EasyWalletWeb.Controllers
 {
+    [Authorize]
     public class WalletController : Controller
     {
         private readonly IEntryService _entryService;
@@ -19,24 +21,11 @@ namespace EasyWalletWeb.Controllers
             _localizer = localizer;
         }
 
-        public IActionResult Index()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToRoute("login");
-            }
-
-            return View();
-        }
+        public IActionResult Index() => View();
 
         [HttpPost]
         public async Task<IActionResult> Entry(WalletEntry form)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToRoute("login");
-            }
-
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             try

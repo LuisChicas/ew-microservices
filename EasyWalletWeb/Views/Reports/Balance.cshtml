@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using EasyWalletWeb.Infrastructure
 
-@model EasyWalletWeb.ViewModels.ReportsBalance
+@model EasyWallet.Business.Reports.BalanceReport
 
 @inject IViewLocalizer Localizer
 
@@ -59,8 +59,8 @@
             @for (int i = 0; i < Model.Months.Count; i++)
             {
                 <div class="d-flex my-4">
-                    <h5 class="mr-auto balance-month">@Model.Months[i].Key.ToString("MMMM yyyy")</h5>
-                    <h5 class="balance-month">@Model.Months[i].Value.ToString("C")</h5>
+                    <h5 class="mr-auto balance-month">@Model.Months[i].Date.ToString("MMMM yyyy")</h5>
+                    <h5 class="balance-month">@Model.Months[i].Balance.ToString("C")</h5>
                 </div>
             }
         </div>

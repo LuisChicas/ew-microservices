@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using EasyWalletWeb.Infrastructure
 
-@model EasyWalletWeb.ViewModels.ReportsMonthly
+@model EasyWallet.Business.Reports.MonthlyReport
 
 @inject IViewLocalizer Localizer
 
@@ -51,19 +51,19 @@
 
     <div class="reports-main-container">
         <div class="monthly-container">
-            @if (Model.Spends != null && Model.Spends.Count > 0)
+            @if (Model.Months != null && Model.Months.Length > 0)
             {
-                @foreach (var item in Model.Spends)
+                @foreach (var month in Model.Months)
                 {
-                    <h4 class="history-month mt-5 mb-4">@item.Month.ToString("MMMM yyyy")</h4>
+                    <h4 class="history-month mt-5 mb-4">@month.Date.ToString("MMMM yyyy")</h4>
 
                     <table class="table">
                         <tbody>
-                            @foreach (var spend in item.SpendsByCategory)
+                            @foreach (var categoryTotal in month.Categories)
                             {
                                 <tr>
-                                    <td>@spend.Key</td>
-                                    <td class="text-right">@spend.Value.ToString("C")</td>
+                                    <td>@categoryTotal.Name</td>
+                                    <td class="text-right">@categoryTotal.Total.ToString("C")</td>
                                 </tr>
                             }
                         </tbody>
