@@ -7,6 +7,50 @@ namespace EasyWallet.Business.Tests.Data
 {
     public class Categories
     {
+        public static CategoryData DefaultIncomeCategory = new CategoryData()
+        {
+            Id = 1,
+            UserId = 1,
+            CategoryTypeId = 2,
+            Name = "Incomes",
+            Tags = new List<TagData>()
+            {
+                new TagData()
+                {
+                    Id = 1,
+                    CategoryId = 1,
+                    Name = "Incomes",
+                    CreatedAt = new DateTime(2020, 1, 1)
+                }
+            },
+            CreatedAt = new DateTime(2020, 1, 1)
+        };
+
+        public static CategoryData DefaultOthersCategory = new CategoryData()
+        {
+            Id = 2,
+            UserId = 1,
+            CategoryTypeId = 1,
+            Name = "Others",
+            Tags = new List<TagData>()
+            {
+                new TagData()
+                {
+                    Id = 2,
+                    CategoryId = 2,
+                    Name = "Others",
+                    CreatedAt = new DateTime(2020, 1, 1)
+                }
+            },
+            CreatedAt = new DateTime(2020, 1, 1)
+        };
+
+        public static List<CategoryData> DefaultCategories = new List<CategoryData>()
+        {
+            DefaultIncomeCategory,
+            DefaultOthersCategory
+        };
+
         public static List<CategoryData> ActiveCategoriesWithTags = new List<CategoryData>()
         {
             new CategoryData()
