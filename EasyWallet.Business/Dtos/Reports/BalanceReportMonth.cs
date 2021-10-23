@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace EasyWallet.Business.Reports
+namespace EasyWallet.Business.Dtos.Reports
 {
     public struct BalanceReportMonth
     {

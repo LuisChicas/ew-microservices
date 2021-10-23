@@ -1,7 +1,6 @@
-﻿using EasyWallet.Business.Models;
-using System;
+﻿using System;
 
-namespace EasyWallet.Business.Reports
+namespace EasyWallet.Business.Dtos.Reports
 {
     public struct HistoryReportMonth
     {

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyWallet.Data", "EasyWall
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyWallet.Business", "EasyWallet.Business\EasyWallet.Business.csproj", "{23FE1ABE-6C75-4BFF-AD95-39C3A63AF579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWallet.Business.Tests", "EasyWallet.Business.Tests\EasyWallet.Business.Tests.csproj", "{98D858A4-2942-4CF9-A413-0798A5AAC675}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyWallet.Business.Tests", "EasyWallet.Business.Tests\EasyWallet.Business.Tests.csproj", "{98D858A4-2942-4CF9-A413-0798A5AAC675}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyWallet.Common", "EasyWallet.Common\EasyWallet.Common.csproj", "{8E9322AA-B952-442D-82D6-12E2DE62C0F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{98D858A4-2942-4CF9-A413-0798A5AAC675}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98D858A4-2942-4CF9-A413-0798A5AAC675}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98D858A4-2942-4CF9-A413-0798A5AAC675}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E9322AA-B952-442D-82D6-12E2DE62C0F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E9322AA-B952-442D-82D6-12E2DE62C0F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E9322AA-B952-442D-82D6-12E2DE62C0F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E9322AA-B952-442D-82D6-12E2DE62C0F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

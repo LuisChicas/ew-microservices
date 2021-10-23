@@ -1,4 +1,6 @@
-﻿using EasyWallet.Business.Exceptions;
+﻿using EasyWallet.Business.Abstractions;
+using EasyWallet.Business.Dtos;
+using EasyWallet.Business.Exceptions;
 using EasyWallet.Business.Services;
 using EasyWallet.Business.Tests.Data;
 using EasyWallet.Data.Abstractions;
@@ -18,7 +20,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_ValidEntry_ParsesRightTagAndAmount(string entryText, string expectedTagName, decimal expectedAmount)
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             var date = new DateTime();
             int userId = 1;
 
@@ -34,7 +37,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_EntryNullOrEmpty_ThrowsInvalidEntryException(string entryText)
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             var date = new DateTime();
             int userId = 1;
 
@@ -47,7 +51,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_EntryWithNoSeparatedKeywordAndAmount_ThrowsInvalidEntryException(string entryText)
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             var date = new DateTime();
             int userId = 1;
 
@@ -58,7 +63,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_InvalidAmountOfMoney_ThrowsInvalidEntryAmountException()
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             var date = new DateTime();
             int userId = 1;
             string entryText = "Latte 4.05.1";
@@ -70,7 +76,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_ValidEntry_SetsEntryDate()
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             string entryText = "Gas $10";
             int userId = 1;
 
@@ -89,7 +96,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_EntryTextUsingSavedTag_UsesTag()
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             string entryText = "Incomes $10";
             var date = new DateTime();
             int userId = Categories.DefaultIncomeCategory.UserId;
@@ -105,7 +113,8 @@ namespace EasyWallet.Business.Tests.Services
         public async Task AddEntry_EntryTextUsingNonSavedTag_CreatesNewTagWithEntryText()
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
-            EntryService entryService = CreateEntryService(mockUnitOfWork);
+            var stubEntriesClient = new Mock<IEntriesClient>();
+            EntryService entryService = CreateEntryService(mockUnitOfWork, stubEntriesClient);
             string entryText = "Pizza $10";
             var date = new DateTime();
             int userId = 1;
@@ -119,7 +128,7 @@ namespace EasyWallet.Business.Tests.Services
             )));
         }
 
-        private EntryService CreateEntryService(Mock<IUnitOfWork> fakeUnitOfWork)
+        private EntryService CreateEntryService(Mock<IUnitOfWork> fakeUnitOfWork, Mock<IEntriesClient> fakeEntriesClient)
         {
             fakeUnitOfWork
                 .Setup(x => x.Categories.GetActiveCategoriesWithTagsByUser(It.IsAny<int>()).Result)
@@ -129,7 +138,9 @@ namespace EasyWallet.Business.Tests.Services
 
             fakeUnitOfWork.Setup(x => x.Entries.AddAsync(It.IsAny<EntryData>()));
 
-            return new EntryService(fakeUnitOfWork.Object);
+            fakeEntriesClient.Setup(x => x.CreateEntry(It.IsAny<CreateEntryRequest>()));
+
+            return new EntryService(fakeUnitOfWork.Object, fakeEntriesClient.Object);
         }
     }
 }

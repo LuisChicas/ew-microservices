@@ -1,4 +1,5 @@
 ﻿using EasyWallet.Business.Abstractions;
+using EasyWallet.Business.Dtos;
 using EasyWallet.Business.Exceptions;
 using EasyWallet.Data.Abstractions;
 using EasyWallet.Data.Entities;
@@ -11,10 +12,12 @@ namespace EasyWallet.Business.Services
     public class EntryService : IEntryService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IEntriesClient _entriesClient;
 
-        public EntryService(IUnitOfWork unitOfWork)
+        public EntryService(IUnitOfWork unitOfWork, IEntriesClient entriesClient)
         {
             _unitOfWork = unitOfWork;
+            _entriesClient = entriesClient;
         }
 
         public async Task AddEntry(string entryText, DateTime date, int userId)
@@ -41,39 +44,24 @@ namespace EasyWallet.Business.Services
                 };
 
                 await _unitOfWork.Tags.AddAsync(tag);
+                await _unitOfWork.CommitAsync();
             }
 
-            DateTime today = DateTime.UtcNow;
-
-            var entryDate = new DateTime(
-                date.Year,
-                date.Month,
-                date.Day,
-                today.Hour,
-                today.Minute,
-                today.Second);
-
-            var entry = new EntryData
+            var createEntryRequest = new CreateEntryRequest
             {
+                UserId = userId,
+                CategoryId = tag.CategoryId,
+                KeywordId = tag.Id,
                 Amount = amount,
-                TagId = tag.Id,
-                Date = entryDate,
-                CreatedAt = DateTime.UtcNow
+                Date = date
             };
 
-            await _unitOfWork.Entries.AddAsync(entry);
-            await _unitOfWork.CommitAsync();
+            await _entriesClient.CreateEntry(createEntryRequest);
         }
 
         public async Task DeleteEntry(int id)
         {
-            var entryData = await _unitOfWork.Entries.GetActiveEntryById(id);
-
-            if (entryData != null)
-            {
-                entryData.DeletedAt = DateTime.UtcNow;
-                await _unitOfWork.CommitAsync();
-            }
+            await _entriesClient.DeleteEntry(id);
         }
 
         private (string keyword, decimal amount) ParseEntry(string entry)

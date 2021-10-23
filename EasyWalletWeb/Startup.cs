@@ -1,5 +1,7 @@
 ﻿using EasyWallet.Business.Abstractions;
+using EasyWallet.Business.Clients;
 using EasyWallet.Business.Services;
+using EasyWallet.Common;
 using EasyWallet.Data;
 using EasyWallet.Data.Abstractions;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -45,8 +47,8 @@ namespace EasyWalletWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(GetConnectionString()));
-            services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(GetConnectionString()));
+            services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration["CONNECTION_STRING"]));
+            services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(Configuration["CONNECTION_STRING"]));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, o => {
@@ -61,11 +63,13 @@ namespace EasyWalletWeb
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSingleton<EnvironmentVariables>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IEntryService, EntryService>();
             services.AddTransient<IReportService, ReportService>();
+            services.AddTransient<IEntriesClient, EntriesClient>();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {
@@ -131,15 +135,6 @@ namespace EasyWalletWeb
                 routes.MapRoute("monthly", "u/reports/monthly", new { controller = "Reports", action = "Monthly" });
                 routes.MapRoute("balance", "u/reports/balance", new { controller = "Reports", action = "Balance" });
             });
-        }
-
-        private string GetConnectionString()
-        {
-            string host = Configuration["RDS_HOSTNAME"];
-            string dbName = Configuration["RDS_DB_NAME"];
-            string username = Configuration["RDS_USERNAME"];
-            string password = Configuration["RDS_PASSWORD"];
-            return $"Data Source={host};Initial Catalog={dbName};User ID={username};Password={password};";
         }
     }
 }
