@@ -1,4 +1,5 @@
-﻿using EasyWallet.Data.Entities;
+﻿using EasyWallet.Business.Clients.Dtos;
+using EasyWallet.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,17 +52,16 @@ namespace EasyWallet.Business.Tests.Data
             DefaultOthersCategory
         };
 
-        public static List<CategoryData> ActiveCategoriesWithTags = new List<CategoryData>()
+        public static List<CategoryDto> ActiveCategoriesWithTags = new List<CategoryDto>()
         {
-            new CategoryData()
+            new CategoryDto()
             {
                 Id = 1,
-                UserId = 1,
-                CategoryTypeId = 2,
+                Type = CategoryType.Income,
                 Name = "Incomes",
-                Tags = new List<TagData>()
+                Keywords = new List<KeywordDto>()
                 {
-                    new TagData()
+                    new KeywordDto()
                     {
                         Id = 1,
                         CategoryId = 1,
@@ -71,22 +71,21 @@ namespace EasyWallet.Business.Tests.Data
                 },
                 CreatedAt = new DateTime(2020, 1, 1)
             },
-            new CategoryData()
+            new CategoryDto()
             {
                 Id = 2,
-                UserId = 1,
-                CategoryTypeId = 1,
+                Type = CategoryType.Expense,
                 Name = "Others",
-                Tags = new List<TagData>()
+                Keywords = new List<KeywordDto>()
                 {
-                    new TagData()
+                    new KeywordDto()
                     {
                         Id = 2,
                         CategoryId = 2,
                         Name = "Others",
                         CreatedAt = new DateTime(2020, 1, 1)
                     },
-                    new TagData()
+                    new KeywordDto()
                     {
                         Id = 5,
                         CategoryId = 2,
@@ -97,23 +96,14 @@ namespace EasyWallet.Business.Tests.Data
                 },
                 CreatedAt = new DateTime(2020, 1, 1)
             },
-            new CategoryData()
+            new CategoryDto()
             {
                 Id = 3,
-                UserId = 1,
-                CategoryTypeId = 1,
+                Type = CategoryType.Expense,
                 Name = "Bills",
-                Tags = new List<TagData>()
+                Keywords = new List<KeywordDto>()
                 {
-                    new TagData()
-                    {
-                        Id = 3,
-                        CategoryId = 3,
-                        Name = "Services",
-                        CreatedAt = new DateTime(2020, 1, 1),
-                        DeletedAt = new DateTime(2020, 1, 1)
-                    },
-                    new TagData()
+                    new KeywordDto()
                     {
                         Id = 4,
                         CategoryId = 3,

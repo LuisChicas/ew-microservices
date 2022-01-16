@@ -1,6 +1,7 @@
 ﻿using EasyWallet.Business.Abstractions;
-using EasyWallet.Business.Dtos;
-using EasyWallet.Business.Dtos.Reports;
+using EasyWallet.Business.Clients.Abstractions;
+using EasyWallet.Business.Clients.Dtos;
+using EasyWallet.Business.Clients.Dtos.Reports;
 using EasyWallet.Data.Abstractions;
 using EasyWallet.Data.Entities;
 using System.Collections.Generic;
@@ -51,13 +52,13 @@ namespace EasyWallet.Business.Services
         public async Task<BalanceReport> GetBalanceReport(int userId)
         {
             var categories = await _unitOfWork.Categories.GetActiveCategoriesWithTagsByUser(userId);
-            var incomeCategory = categories.First(c => c.CategoryTypeId == (int)Models.CategoryTypeEnum.Income);
+            var incomeCategory = categories.First(c => c.CategoryTypeId == (int)Models.CategoryType.Income);
             var report = await _entriesClient.GetBalanceReport(userId, incomeCategory.Id);
 
             return report ?? new BalanceReport();
         }
 
-        private void FillInCategoriesAndTagsNames(IEnumerable<Entry> entries, IEnumerable<CategoryData> categories)
+        private void FillInCategoriesAndTagsNames(IEnumerable<EntryDto> entries, IEnumerable<CategoryData> categories)
         {
             foreach(var entry in entries)
             {

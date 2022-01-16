@@ -1,8 +1,8 @@
-﻿using EasyWallet.Business.Dtos;
-using EasyWallet.Business.Dtos.Reports;
+﻿using EasyWallet.Business.Clients.Dtos;
+using EasyWallet.Business.Clients.Dtos.Reports;
 using System.Threading.Tasks;
 
-namespace EasyWallet.Business.Abstractions
+namespace EasyWallet.Business.Clients.Abstractions
 {
     public interface IEntriesClient
     {

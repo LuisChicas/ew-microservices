@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Localization
 @using EasyWalletWeb.Infrastructure
+@using CategoryType = EasyWallet.Business.Models.CategoryType 
 
 @model EasyWalletWeb.ViewModels.CategoriesIndex
 
@@ -63,7 +64,7 @@
                             </a>
                         </h4>
 
-                        @if (category.CategoryTypeId != Constants.IncomesCategoryTypeID
+                        @if (category.Type != CategoryType.Income
                             && category.Name != Constants.OthersCategoryNameEN
                             && category.Name != Constants.OthersCategoryNameES)
                         {

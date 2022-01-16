@@ -1,4 +1,4 @@
-﻿namespace EasyWallet.Business.Dtos
+﻿namespace EasyWallet.Business.Clients.Dtos
 {
     public class CreateEntryResponse
     {

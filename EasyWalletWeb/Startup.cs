@@ -1,5 +1,7 @@
 ﻿using EasyWallet.Business.Abstractions;
 using EasyWallet.Business.Clients;
+using EasyWallet.Business.Clients.Abstractions;
+using EasyWallet.Business.Clients.Services;
 using EasyWallet.Business.Services;
 using EasyWallet.Common;
 using EasyWallet.Data;
@@ -47,7 +49,7 @@ namespace EasyWalletWeb
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration["CONNECTION_STRING"]));
+            //services.AddDbContextPool<DatabaseContext>(o => o.UseMySql(Configuration["CONNECTION_STRING"]));
             services.AddDbContextPool<EasyWalletContext>(o => o.UseMySql(Configuration["CONNECTION_STRING"]));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -70,6 +72,8 @@ namespace EasyWalletWeb
             services.AddTransient<IEntryService, EntryService>();
             services.AddTransient<IReportService, ReportService>();
             services.AddTransient<IEntriesClient, EntriesClient>();
+            services.AddTransient<ICategoriesClient, CategoriesClient>();
+            services.AddScoped<ICategoryErrorService, CategoryErrorService>();
 
             services.Configure<RequestLocalizationOptions>(opts =>
             {

@@ -1,4 +1,4 @@
-﻿using EasyWallet.Business.Dtos.Reports;
+﻿using EasyWallet.Business.Clients.Dtos.Reports;
 using System.Threading.Tasks;
 
 namespace EasyWallet.Business.Abstractions

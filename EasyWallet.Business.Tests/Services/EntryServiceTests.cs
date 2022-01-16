@@ -1,5 +1,5 @@
-﻿using EasyWallet.Business.Abstractions;
-using EasyWallet.Business.Dtos;
+﻿using EasyWallet.Business.Clients.Abstractions;
+using EasyWallet.Business.Clients.Dtos;
 using EasyWallet.Business.Exceptions;
 using EasyWallet.Business.Services;
 using EasyWallet.Business.Tests.Data;

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace EasyWallet.Business.Dtos
+namespace EasyWallet.Business.Clients.Dtos
 {
-    public class Entry
+    public class EntryDto
     {
         public int Id { get; set; }
         public int UserId { get; set; }

@@ -8,7 +8,7 @@ namespace EasyWallet.Business.Abstractions
     {
         Task<IEnumerable<Category>> GetActiveCategoriesByUser(int userId);
 
-        Task<Category> CreateCategory(int userId, string name, IEnumerable<Tag> tags);
+        Task<int> CreateCategory(int userId, string name, IEnumerable<Tag> tags);
 
         Task<Category> GetActiveCategoryById(int id);
 

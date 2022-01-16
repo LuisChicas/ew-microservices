@@ -1,4 +1,4 @@
-﻿namespace EasyWallet.Business.Models
+﻿namespace EasyWallet.Business.Clients.Dtos
 {
     public enum CategoryType
     {

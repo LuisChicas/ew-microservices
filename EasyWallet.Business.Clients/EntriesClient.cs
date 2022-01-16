@@ -1,12 +1,12 @@
-﻿using EasyWallet.Business.Abstractions;
-using System.Threading.Tasks;
+﻿using EasyWallet.Business.Clients.Abstractions;
+using EasyWallet.Business.Clients.Dtos;
+using EasyWallet.Business.Clients.Dtos.Reports;
+using EasyWallet.Common;
 using Flurl;
 using Flurl.Http;
-using EasyWallet.Business.Dtos;
-using EasyWallet.Common;
-using EasyWallet.Business.Dtos.Reports;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace EasyWallet.Business.Clients
 {

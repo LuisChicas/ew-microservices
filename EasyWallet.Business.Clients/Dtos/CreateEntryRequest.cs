@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasyWallet.Business.Dtos
+namespace EasyWallet.Business.Clients.Dtos
 {
     public class CreateEntryRequest
     {

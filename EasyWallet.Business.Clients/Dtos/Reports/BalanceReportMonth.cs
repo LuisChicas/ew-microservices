@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EasyWallet.Business.Dtos.Reports
+namespace EasyWallet.Business.Clients.Dtos.Reports
 {
     public struct BalanceReportMonth
     {

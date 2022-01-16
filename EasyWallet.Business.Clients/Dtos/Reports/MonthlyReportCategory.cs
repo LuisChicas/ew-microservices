@@ -1,4 +1,4 @@
-﻿namespace EasyWallet.Business.Dtos.Reports
+﻿namespace EasyWallet.Business.Clients.Dtos.Reports
 {
     public class MonthlyReportCategory
     {

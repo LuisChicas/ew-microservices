@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EasyWallet.Business.Clients\EasyWallet.Business.Clients.csproj" />
     <ProjectReference Include="..\EasyWallet.Common\EasyWallet.Common.csproj" />
     <ProjectReference Include="..\EasyWallet.Data\EasyWallet.Data.csproj" />
   </ItemGroup>

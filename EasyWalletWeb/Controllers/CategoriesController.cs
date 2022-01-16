@@ -1,4 +1,5 @@
 ﻿using EasyWallet.Business.Abstractions;
+using EasyWallet.Business.Clients.Exceptions;
 using EasyWalletWeb.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -35,26 +36,23 @@ namespace EasyWalletWeb.Controllers
         public async Task<IActionResult> New(CategoryForm form)
         {
             int userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var categories = await _categoryService.GetActiveCategoriesByUser(userId);
 
-            var duplicatedCategory = categories.FirstOrDefault(c => c.Name == form.Name);
-            if (duplicatedCategory != null)
+            try
+            {
+                await _categoryService.CreateCategory(userId, form.Name, form.Tags);
+            }
+            catch (DuplicatedCategoryNameException)
             {
                 ModelState.AddModelError("Name", _localizer["NameAlreadyExists"]);
                 form.IsNew = true;
                 return View("Form", form);
             }
-
-            var duplicatedTag = categories
-                .SelectMany(c => c.Tags)
-                .FirstOrDefault(t => form.Tags.Any(formTag => formTag.Name == t.Name));
-
-            if (duplicatedTag != null)
+            catch (DuplicatedKeywordNameException e)
             {
                 string message = string.Format(
                     "{0}{1}{2}",
                     _localizer["KeywordAlreadyExists1"],
-                    duplicatedTag.Name,
+                    e.Data["keywordName"],
                     _localizer["KeywordAlreadyExists2"]);
 
                 ModelState.AddModelError("Tags", message);
@@ -62,8 +60,6 @@ namespace EasyWalletWeb.Controllers
                 form.IsNew = true;
                 return View("Form", form);
             }
-
-            await _categoryService.CreateCategory(userId, form.Name, form.Tags);
 
             return RedirectToAction("Index");
         }
