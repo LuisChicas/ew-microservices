@@ -1,13 +1,10 @@
-# Easy Wallet
+# Easy Wallet - Microservices
 
-Web application to keep track of expenses. Built on ASP .NET Core.
+Expense tracker application built on a microservices architecture and ASP.NET Core.
 
-Site: http://wallet.luischicas.com
 
-## Codebase Features
+## Architecture
 
-- Separated in Data, Business and Web layers.
-- Dependency injection.
-- Unit of Work and Repository pattern.
-- Localization.
-- Docker and AWS Elastic Beanstalk configuration.
+- ew-microservices: Web application, manages Users, and consumes the other microservices.
+- [ew-categories](https://github.com/LuisChicas/ew-categories) - Microservice managing Categories and Keywords.
+- [ew-entries](https://github.com/LuisChicas/ew-entries) - Microservice managing Entries and Reports.
